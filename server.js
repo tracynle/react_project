@@ -9,7 +9,8 @@ const app = express();
 const PORT = process.env.PORT || 9001;
 // use the modals folder
 const db = require("./models");
-
+// ... other imports 
+const path = require("path")
 
 // Defined middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +22,14 @@ if (process.env.NODE_ENV === "production") {
 // add routes, both API and View
 // app.use(routes);
 
-// Gotta connect to mySql ** I think this is correct? **
+// ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+// ...
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(PORT, function() {
     console.log(`🌎 API Server Listening on Port ${PORT}!`)
