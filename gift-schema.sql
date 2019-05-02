@@ -1,7 +1,7 @@
 -- Drops if it exists currently --
-DROP DATABASE IF EXISTS finalProject_db;
-CREATE DATABASE finalProject_db;
-USE finalProject_db;
+DROP DATABASE IF EXISTS react_project_db;
+CREATE DATABASE react_project_db;
+USE react_project_db;
 
 CREATE TABLE users (
 	id INT NOT NULL AUTO_INCREMENT,

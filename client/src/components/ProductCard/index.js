@@ -65,7 +65,7 @@ class RecipeReviewCard extends React.Component {
         
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/paella.jpg"
+          // image="/static/images/cards/paella.jpg"
           title="Paella dish"
         />
         {this.props.children}
