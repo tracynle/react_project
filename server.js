@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 9001;
 // use the modals folder
 const db = require("./models");
 // ... other imports 
-const path = require("path")
+const path = require("path");
+
 
 // Defined middleware here
 app.use(express.urlencoded({ extended: true }));

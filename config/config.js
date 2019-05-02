@@ -2,9 +2,12 @@ require("dotenv").config();
 
 module.exports = {
   "development": {
+    username: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASS,
+    database: process.env.MYSQL_DB,
     "username": "root",
     "password": null,
-    "database": "react_project_db",
+    "database": "react_project",
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mysql"
