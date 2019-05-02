@@ -5,10 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "axios": "^0.18.0",
+    "mysql2": "^1.6.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "^3.0.0"
+    "react-scripts": "^3.0.0",
+    "sequelize": "^5.8.2"
   },
   "devDependencies": {},
   "scripts": {
@@ -21,4 +23,3 @@
   "author": "tracy, matt, irvin",
   "license": "ISC"
 }
-
