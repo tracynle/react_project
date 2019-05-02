@@ -26,8 +26,8 @@ module.exports = function(app) {
       res.json(dbUserLikes);
     });
   });
-
-  // ===== user info with likes =====
+  
+  // -------------- user info with likes --------------------
   app.get("/api/user/likes", function(req, res) {
     console.log("PRINT TEST");
     console.log(req.query.UserId);
