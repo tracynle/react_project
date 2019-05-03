@@ -1,4 +1,6 @@
 var db = require("../models");
+const path = require("path");
+const router = require("express").Router();
 
 module.exports = function(app) {
   // --------------- User Routes ----------------------------
@@ -40,28 +42,11 @@ module.exports = function(app) {
     });
   });
 
-  // app.get("/api/entries/journals/body", function(req, res) {
-  //   db.JournalEntries.findAll({
-  //     where: {
-  //       UserId: req.query.UserId
-  //     }
-  //   }).then(function(dbJournalEntriesStuff) {
+  router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
+  
 
-  //   });
-  // });
-  // ===== End of Matt & Tracy's Stuff =====
 
-  // Create new entry (CREATE) for specific user
-//   app.post("/api/entries/", function(req, res) {
-//     //db.tableName.create(req.body).then(function(dbName) {});
-//     db.JournalEntries.create(req.body).then(function(dbJournalEntries) {
-//       // console.log(res.body);
-//       console.log(dbJournalEntries);
-//       // console.log(res);
-//       res.json(dbJournalEntries);
-//     });
-//   });
 };
-
-// RESTful: POST GET PUT DELETE
-// DB: CRUD --> create read update delete
+module.exports = router;
