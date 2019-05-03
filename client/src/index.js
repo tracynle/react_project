@@ -1,3 +1,5 @@
+// Entry point to your react page
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
