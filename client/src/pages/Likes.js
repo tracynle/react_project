@@ -4,13 +4,13 @@ import React from "react";
 
 
 // ===== RENDERS ONE DIV THAT RENDERS ALL PAGE COMPONENTS =====
-function FriendsList() {
+function Likes() {
     return(
         <div>
-            FriendsList Route
+            Likes Route
         </div>
     );
 }
 
 // ===== EXPORTS `FriendList` PAGE RENDER FUNCTION =====
-export default FriendsList;
+export default Likes;
