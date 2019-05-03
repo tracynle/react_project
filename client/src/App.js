@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import Home from './pages/Home';
 import User from './pages/User';
 import Friends from './pages/Friends';
-import Likes from './pages/FriendList';
+import Likes from './pages/Likes';
 import Wrapper from './components/Wrapper';
 
 // create for loop for product card
