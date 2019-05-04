@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import User from './pages/User';
 import Friends from './pages/Friends';
 import Likes from './pages/Likes';
-import Wrapper from './components/Wrapper';
 
 // create for loop for product card
 class App extends React.Component {
@@ -12,12 +11,10 @@ class App extends React.Component {
     return  (
       <div>
         <Router>
-          <Wrapper>
             <Route exact path="/" component={Home} />
             <Route exact path="/User" component={User} />
             <Route exact path="/Friends" component={Friends} />
             <Route exact path="/Likes" component={Likes} />
-          </Wrapper>
         </Router>
       </div>
     );
