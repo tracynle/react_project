@@ -1,4 +1,4 @@
-var axios = require("axios");
+let axios = require("axios");
 
 // The getResults method retrieves Results from the Etsy server
 // It accepts a "query" or term to search the result api for
@@ -11,5 +11,7 @@ let exportStuff = {
     return axios.get(BASEURL + "category=" + query + "&" + APIKEY);
   }
 };
+
+module.exports = exportStuff;
 
 
