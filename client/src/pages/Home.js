@@ -1,5 +1,6 @@
 // ==== NEEDS IMPORT FROM REACT OR PAGE BREAK =====
 import React, { Component } from "react"; // imports the component "Component" from react's "Component.js" file
+
 // ===== BELOW IMPORTS OTHER COMPONENTS USED IN PAGE =====
 
 

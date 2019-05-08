@@ -4,12 +4,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-
+import SearchBar from '../SearchBar';
 
 const styles = theme => ({
   root: {
@@ -50,29 +49,21 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-    width: '100%',
-  },
-  inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 120,
-      '&:focus': {
-        width: 200,
-      },
-    },
-  },
+  }
 });
+// create searchBar component and include this function
+
+// onChange={doSomethingWithSearchTerms}
+// function doSomethingWithSearchTerms(event) {
+//   console.log(event.target.value);
+// }
+
+// Renamed file to NavBar so it won't be confused with Material UI's Appbar. 
+// Navbar component will handle the search bar onChange to see what you are typing
+// To do: create searchBar component file and include it in NavBar function- DONE 
 
 
-function SearchAppBar(props) {
+function NavBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -89,13 +80,7 @@ function SearchAppBar(props) {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
+            <SearchBar classes=""></SearchBar>
           </div>
         </Toolbar>
       </AppBar>
@@ -103,8 +88,8 @@ function SearchAppBar(props) {
   );
 }
 
-SearchAppBar.propTypes = {
+NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SearchAppBar);
+export default withStyles(styles)(NavBar);

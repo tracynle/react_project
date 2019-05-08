@@ -1,7 +1,11 @@
-var db = require("../models");
+let db = require("../models");
 const path = require("path");
 const router = require("express").Router();
+<<<<<<< HEAD
 var etsyApi = require("../utils/etsyApi");
+=======
+let etsyApi = require("../utils/etsyApi");
+>>>>>>> searchbar
 
 module.exports = function(app) {
   // --------------- User Routes ----------------------------
@@ -52,11 +56,17 @@ module.exports = function(app) {
     })
   });
 
-  router.use(function(req, res) {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// ------ Results route -------
+  app.get("/api/search/", function(req, res){
+    console.log("Search results:");
+    etsyApi.search(req.params.item).then(function(response) {
+      // Make an API call to Etsy's api to do search and return user's search
+      res.json(response.data);
+      console.log(response);
+    })
+    .catch(function(error){
+      console.log(error);
+    })
   });
-  
-
-
 };
 module.exports = router;
