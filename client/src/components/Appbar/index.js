@@ -131,6 +131,14 @@ const styles = theme => ({
   },
 });
 // create searchBar component and include this function
+<<<<<<< Updated upstream
+=======
+
+// onChange={doSomethingWithSearchTerms}
+// function doSomethingWithSearchTerms(event) {
+//   console.log(event.target.value);
+// }
+>>>>>>> Stashed changes
 
 // onChange={doSomethingWithSearchTerms}
 // function doSomethingWithSearchTerms(event) {
