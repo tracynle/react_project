@@ -12,6 +12,7 @@ const db = require("./models");
 // ... other imports 
 const path = require("path");
 
+routes(app);
 
 // Defined middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -20,17 +21,15 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
-// add routes, both API and View
-// app.use(routes);
 
 // ... other app.use middleware 
 app.use(express.static(path.join(__dirname, "client", "build")))
 
-// ...
+
 // Right before your app.listen(), add this:
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
 
 app.listen(PORT, function() {
     console.log(`🌎 API Server Listening on Port ${PORT}!`)

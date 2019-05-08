@@ -22,7 +22,7 @@ class Home extends Component {
     render() {
         return(
             <div>
-                My Home Route testing to see if it shows on Heroku
+                Home Route
             </div>
         );
     }   

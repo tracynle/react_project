@@ -76,4 +76,3 @@ class SearchBar extends React.Component {
 }
 
 export default withStyles(styles)(SearchBar);
-
