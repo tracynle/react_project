@@ -1,6 +1,6 @@
 let db = require("../models");
 const path = require("path");
-const router = require("express").Router();
+// const router = require("express").Router();
 let etsyApi = require("../utils/etsyApi");
 
 module.exports = function(app) {
@@ -42,6 +42,7 @@ module.exports = function(app) {
       res.json(dbUserLikes);
     });
   });
+
 // ------ Results route -------
   app.get("/api/search/", function(req, res){
     console.log("Search results:");
@@ -49,6 +50,9 @@ module.exports = function(app) {
       // Make an API call to Etsy's api to do search and return user's search
       res.json(response.data);
       console.log(response);
+    })
+    .catch(function(error){
+      console.log(error);
     })
   });
 
@@ -65,4 +69,4 @@ module.exports = function(app) {
     })
   });
 };
-module.exports = router;
+// module.exports = router;
