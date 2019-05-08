@@ -1,11 +1,7 @@
 let db = require("../models");
 const path = require("path");
 const router = require("express").Router();
-<<<<<<< HEAD
-var etsyApi = require("../utils/etsyApi");
-=======
 let etsyApi = require("../utils/etsyApi");
->>>>>>> searchbar
 
 module.exports = function(app) {
   // --------------- User Routes ----------------------------
