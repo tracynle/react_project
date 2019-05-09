@@ -17,12 +17,12 @@ class Home extends Component {
 
     };
     // === GENERAL FUNCTIONS ===
-
+    randomArray = [" yaga ", " yeet ", " yonkers ", " bonkers "];
     // === RENDER FUNCTION  === 
     render() {
         return(
             <div>
-                Home Route
+                Home
             </div>
         );
     }   
