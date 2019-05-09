@@ -7,7 +7,6 @@ import Likes from './pages/Likes';
 // import NavBar from './components/NavBar';
 import Results from './pages/Results';
 
-// create for loop for product card
 class App extends React.Component {
   render() {
     return  (
