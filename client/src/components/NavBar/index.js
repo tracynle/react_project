@@ -80,7 +80,7 @@ function NavBar(props) {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <SearchBar classes=""></SearchBar>
+            <SearchBar className="" {...props}></SearchBar>
           </div>
         </Toolbar>
       </AppBar>
