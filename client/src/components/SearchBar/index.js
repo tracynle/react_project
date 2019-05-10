@@ -4,10 +4,6 @@ import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import axios from "axios";
 
-// To do: set the InputBase to accept values to be able to search for items by giving an attribute: onChange that thakes a function
-// doSomethingWithSearchTerms
-// Add onkey enter function yourself, bc Material UI doesn't have documentation
-// check: https://reactjs.org/docs/events.html#keyboard-events
 
 const styles = theme => ({
     inputRoot: {
@@ -31,6 +27,9 @@ const styles = theme => ({
   });
   
 class SearchBar extends React.Component {
+    // state = {
+    //   results: []
+    // }
     static propTypes = {
         classes: PropTypes.object.isRequired,
     }
@@ -47,8 +46,18 @@ class SearchBar extends React.Component {
             item: event.target.value
           }
         })
-        .then(function (response) {
-          console.log(response);
+        .then(response => {
+          // Redirect to results page to render etsy's results
+          // Will be redirected to a new page and it will be pushed into the browser's history
+          // the state contains the response and it is grabing the data that we need
+          console.log(this.props);
+          this.props.history.push({
+            pathname:"/results",
+            state:{
+              items: response.data.results
+             }
+           });
+          // this.setState({results: response.data.results})
         })
         .catch(function (error) {
           console.log(error);
@@ -57,17 +66,19 @@ class SearchBar extends React.Component {
       }
     }
     
-    // search bar
+    // search bar component
     render() {
       return (
-        <InputBase 
-          placeholder="Search…"
-          classes={{
-              root: this.props.classes.inputRoot,
-              input: this.props.classes.inputInput,
-          }}
-          onKeyUp = { this.doSomethingWithSearchTerms }
-        />
+        <div>
+          <InputBase 
+            placeholder="Search…"
+            classes={{
+                root: this.props.classes.inputRoot,
+                input: this.props.classes.inputInput,
+            }}
+            onKeyUp = { e => {this.doSomethingWithSearchTerms(e)} }
+          />
+        </div>
       )
     }
   
