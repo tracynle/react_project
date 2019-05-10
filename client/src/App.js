@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from './pages/Home';
 import User from './pages/User';
 import Friends from './pages/Friends';
+import Results from './pages/Results';
 import Likes from './pages/Likes';
 // import NavBar from './components/NavBar';
-import Results from './pages/Results';
+// import Results from './pages/Results';
 
 class App extends React.Component {
   render() {
