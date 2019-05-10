@@ -21,7 +21,10 @@ class Results extends Component {
                 {this.props.location.state.items.map(item => { 
                     return (
                         <div>
-                        {item.title}
+                            
+                            {item.title}
+                            {item.price}
+
                         </div>
                         
                     )
