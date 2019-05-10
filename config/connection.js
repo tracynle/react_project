@@ -11,7 +11,7 @@ if (process.env.JAWSDB_URL) {
         port: 3306,
         host: 'localhost',
         user: 'root',
-        password: 'MattPassword',
+        password: 'Ngoc513*',
         database: 'react_project_db'
     })
 };

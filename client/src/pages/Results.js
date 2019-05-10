@@ -10,7 +10,7 @@ class Results extends Component {
     state = {
         items: []
     }
-    
+
 
     // === RENDER FUNCTION === 
     // 
@@ -23,15 +23,15 @@ class Results extends Component {
                         <div>
                         {item.title}
                         </div>
-                        
+
                     )
 
                 })}
-             
+
             </div>
         );
     }
 }
 
 // ===== EXPORTS `Results` PAGE RENDER FUNCTION =====
-export default Results;
+export default Results; 
