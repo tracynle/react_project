@@ -5,7 +5,7 @@ let axios = require("axios");
 
 // ----------- Etsy Listings --------
 const baseListingUrl = "https://openapi.etsy.com/v2/listings/active?";
-const APIKEY = "api_key=zvc75b5f3o9khob7e0kd7nza";
+const APIKEY = "api_key=rdym62jwh3l5iv0m0va5cx0c";
 
 // ----------- Etsy Images -----------
 const baseImageUrl = "https://openapi.etsy.com/v2/listings/"
