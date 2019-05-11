@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 
 import NavBar from '../components/NavBar';
+import ProductCard from "../components/ProductCard";
 // ===== BELOW IMPORTS OTHER COMPONENTS USED IN PAGE =====
 
 
@@ -20,10 +21,13 @@ class Results extends Component {
             <NavBar></NavBar>
                 {this.props.location.state.items.map(item => { 
                     return (
-                        <div>
-                        {item.title}
-                        </div>
-
+                       <ProductCard
+                            key={item.listing_id}
+                            title={item.title}
+                            price={item.price}
+                            tags={item.tags}
+                            description={item.description}
+                        />
                     )
 
                 })}

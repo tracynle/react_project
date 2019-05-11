@@ -80,7 +80,7 @@ function NavBar(props) {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <SearchBar className="" {...props}></SearchBar>
+            <SearchBar history={props.history}></SearchBar>
           </div>
         </Toolbar>
       </AppBar>

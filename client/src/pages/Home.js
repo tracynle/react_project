@@ -23,7 +23,7 @@ class Home extends Component {
     render() {
         return(
             <div>
-            <NavBar {...this.props}></NavBar>
+            <NavBar history={this.props.history}></NavBar>
                 Home Route
             </div>
         );
