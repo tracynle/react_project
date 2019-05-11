@@ -8,7 +8,7 @@ const APIKEY = "api_key=zvc75b5f3o9khob7e0kd7nza";
 
 let exportStuff = {
   search: function(query) {
-    return axios.get(BASEURL + "category=" + query + "&" + APIKEY);
+    return axios.get(BASEURL + "tags=" + query + "&" + APIKEY);
   }
 };
 
