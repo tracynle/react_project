@@ -3,7 +3,7 @@ const path = require("path");
 let etsyApi = require("../utils/etsyApi");
 
 module.exports = function(app) {
-  // --------------- User Routes ----------------------------
+  // --------------- DB User Routes ----------------------------
   // Get all users (READ)
   app.get("/api/user", function(req, res) {
     db.User.findAll({}).then(function(dbUser) {
@@ -21,7 +21,7 @@ module.exports = function(app) {
     });
   });
 
-  // -------------- userLikes Routes --------------------
+  // -------------- DB userLikes Routes --------------------
   // Get all likes from the user
   app.get("/api/likes/", function(req, res) {
     db.userLikes.findAll({}).then(function(dbUserLikes) {
@@ -29,7 +29,7 @@ module.exports = function(app) {
     });
   });
   
-  // -------------- user info with likes --------------------
+  // -------------- DB user info with likes --------------------
   app.get("/api/user/likes", function(req, res) {
     console.log("PRINT TEST");
     console.log(req.query.UserId);
@@ -42,16 +42,27 @@ module.exports = function(app) {
     });
   });
 
-// ------ Results route -------
+  // ------ Etsy Api Results route -------
   app.get("/api/search/", function(req, res){
     console.log("Search results:");
     etsyApi.search(req.query.item).then(function(response) {
       // Make an API call to Etsy's api to do search and return user's search
       res.json(response.data);
-      console.log(response);
     })
     .catch(function(error){
       console.log(error);
+    })
+  });
+
+  // ------ Etsy Api Images route -------
+  app.get("/api/images/", function(req, res){
+    console.log("====== Image results:");
+    etsyApi.images(req.query.item).then(function(response) {
+      // Make an API call to Etsy's api to do search and return user's search
+      res.json(response.data);
+    })
+    .catch(function(error){
+      console.log("====== Image error =====", error);
     })
   });
 };

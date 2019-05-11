@@ -1,6 +1,5 @@
 // ==== NEEDS IMPORT FROM REACT OR PAGE BREAK =====
 import React, { Component } from "react";
-
 import NavBar from '../components/NavBar';
 import ProductCard from "../components/ProductCard";
 // ===== BELOW IMPORTS OTHER COMPONENTS USED IN PAGE =====
@@ -12,9 +11,7 @@ class Results extends Component {
         items: []
     }
 
-
-    // === RENDER FUNCTION === 
-    // 
+    // === RENDER FUNCTION ===  
     render() {
         return(
             <div>
@@ -23,15 +20,14 @@ class Results extends Component {
                     return (
                        <ProductCard
                             key={item.listing_id}
+                            listing_id={item.listing_id}
                             title={item.title}
                             price={item.price}
                             tags={item.tags}
                             description={item.description}
                         />
                     )
-
                 })}
-
             </div>
         );
     }

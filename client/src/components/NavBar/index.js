@@ -51,17 +51,6 @@ const styles = theme => ({
     justifyContent: 'center',
   }
 });
-// create searchBar component and include this function
-
-// onChange={doSomethingWithSearchTerms}
-// function doSomethingWithSearchTerms(event) {
-//   console.log(event.target.value);
-// }
-
-// Renamed file to NavBar so it won't be confused with Material UI's Appbar. 
-// Navbar component will handle the search bar onChange to see what you are typing
-// To do: create searchBar component file and include it in NavBar function- DONE 
-
 
 function NavBar(props) {
   const { classes } = props;

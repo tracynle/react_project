@@ -17,10 +17,11 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import axios from 'axios';
 
 const styles = theme => ({
   card: {
-    maxWidth: 300,
+    maxWidth: 500,
   },
   media: {
     height: 0,
@@ -47,17 +48,17 @@ const styles = theme => ({
   }
 });
 
-function EtsyProducts(props) {
-  const arrayHolder = props.etsyArray;
-  const etsyListItems = arrayHolder.map((etsyArray) =>
-    //dont change -- '<li>' tag will be edited by me - Matt
-    <li key={etsyArray.toString()}>{etsyArray}</li>
-  );
-  return (
-    //dont change -- div is holding '<li>'
-    <ul>{etsyListItems}</ul>
-  );
-}
+// function EtsyProducts(props) {
+//   const arrayHolder = props.etsyArray;
+//   const etsyListItems = arrayHolder.map((etsyArray) =>
+//     //dont change -- '<li>' tag will be edited by me - Matt
+//     <li key={etsyArray.toString()}>{etsyArray}</li>
+//   );
+//   return (
+//     //dont change -- div is holding '<li>'
+//     <ul>{etsyListItems}</ul>
+//   );
+// }
 
 class ProductCard extends Component {
   constructor(props) {
@@ -65,6 +66,7 @@ class ProductCard extends Component {
     this.state = { 
       expanded: false,
       loved: false,
+      image: ""
     };
   }
 
@@ -87,6 +89,26 @@ class ProductCard extends Component {
     }
   }
 
+  // Make an Ajax call to retrieve Etsy's images
+  // Images will be rendered in the Results.js file (will move to User.js)
+  componentDidMount = () => {
+    axios.get('/api/images', {
+      params: {
+        item: this.props.listing_id
+      }
+    })
+    .then(response => {
+      const imageUrl = response.data.results[0].url_fullxfull;
+      console.log("=====IMAGE URL:", imageUrl);
+      this.setState({
+        image: imageUrl
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -94,7 +116,7 @@ class ProductCard extends Component {
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image={this.props.imageUrl}
+          image={this.state.image}
           title={this.props.title}
         />
         <CardContent>
@@ -132,9 +154,6 @@ class ProductCard extends Component {
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography variant='h6'>Tags:</Typography>
-            <EtsyProducts 
-              etsyArray = {this.props.etsyTags}
-            />
           </CardContent>
         </Collapse>
       </Card>
