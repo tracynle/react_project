@@ -1,10 +1,7 @@
 // ==== NEEDS IMPORT FROM REACT OR PAGE BREAK =====
 import React, { Component } from "react"; // imports the component "Component" from react's "Component.js" file
 import { AuthContainer, AuthRow, Col} from '../components/Grid/AuthGrid';
-import {Link} from 'react-router-dom'
-
-
-import NavBar from '../components/NavBar';
+import {Link} from 'react-router-dom' 
 // ===== BELOW IMPORTS OTHER COMPONENTS USED IN PAGE =====
 
 

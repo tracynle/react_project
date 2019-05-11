@@ -7,16 +7,16 @@
     "axios": "^0.18.0",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
-<<<<<<< HEAD
     "if-env": "^1.0.4",
     "mysql2": "^1.6.5",
     "react-day-picker": "^7.3.0",
-    "sequelize": "^5.8.2"
-=======
+    "sequelize": "^5.8.2",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.2",
+    "if-env": "^1.0.4",
     "mysql2": "^1.6.5",
     "sequelize": "^5.8.2",
     "if-env": "^1.0.4"
->>>>>>> 4fc583ccd536bfaf2ce49bba0aab1c85004233c4
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
