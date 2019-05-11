@@ -5,21 +5,26 @@ import User from './pages/User';
 import Friends from './pages/Friends';
 import Results from './pages/Results';
 import Likes from './pages/Likes';
-// import NavBar from './components/NavBar';
-// import Results from './pages/Results';
+import NavBar from './components/NavBar';
+import Login from './pages/login';
+import SignUp from './pages/SignUp';
 
+// create for loop for product card
 class App extends React.Component {
   render() {
     return  (
       <div>
-      <Router>
-      <Switch>
+        <NavBar></NavBar>
+        <Router>
+          <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/User" component={User} />
-            <Route exact path="/Friends" component={Friends} />
-            <Route exact path="/Likes" component={Likes} />
+            <Route exact path="/user" component={User} />
+            <Route exact path="/friends" component={Friends} />
+            <Route exact path="/likes" component={Likes} />
             <Route exact path="/results" component={Results} />
-            </Switch>
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/SignUp" component={SignUp} />
+          </Switch>
         </Router>
       </div>
     );
