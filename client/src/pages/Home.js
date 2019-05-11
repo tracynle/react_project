@@ -3,6 +3,8 @@ import React, { Component } from "react"; // imports the component "Component" f
 import { AuthContainer, AuthRow, Col} from '../components/Grid/AuthGrid';
 import {Link} from 'react-router-dom'
 
+
+import NavBar from '../components/NavBar';
 // ===== BELOW IMPORTS OTHER COMPONENTS USED IN PAGE =====
 
 
