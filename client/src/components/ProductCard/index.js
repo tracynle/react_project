@@ -21,7 +21,7 @@ import axios from 'axios';
 
 const styles = theme => ({
   card: {
-    maxWidth: 500,
+    maxWidth: 200,
   },
   media: {
     height: 0,
@@ -99,7 +99,6 @@ class ProductCard extends Component {
     })
     .then(response => {
       const imageUrl = response.data.results[0].url_fullxfull;
-      console.log("=====IMAGE URL:", imageUrl);
       this.setState({
         image: imageUrl
       })
@@ -120,11 +119,8 @@ class ProductCard extends Component {
           title={this.props.title}
         />
         <CardContent>
-          <Typography variant="h5">
+          <Typography variant="h7">
             {this.props.title}
-          </Typography>
-          <Typography component="p">
-            {this.props.description}
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
@@ -137,7 +133,7 @@ class ProductCard extends Component {
           >
             <FavoriteIcon />
           </IconButton>
-          <Typography variant='h6'>
+          <Typography variant='h7'>
             {"$" + parseFloat(this.props.price)}
           </Typography>
           <IconButton
@@ -153,7 +149,7 @@ class ProductCard extends Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography variant='h6'>Tags:</Typography>
+            <Typography variant='p'>Description:{this.props.description}</Typography>
           </CardContent>
         </Collapse>
       </Card>

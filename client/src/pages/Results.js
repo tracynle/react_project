@@ -23,7 +23,6 @@ class Results extends Component {
                             listing_id={item.listing_id}
                             title={item.title}
                             price={item.price}
-                            tags={item.tags}
                             description={item.description}
                         />
                     )
