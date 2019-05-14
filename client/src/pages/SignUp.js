@@ -9,7 +9,7 @@ import 'react-day-picker/lib/style.css';
 export default class SignUp extends React.Component{
     constructor(props){
     super(props);
-        this.handleDayClick = this.handleDayClick.bind(this);
+        this.handleDayChange = this.handleDayChange.bind(this);
         this.state = {
         username: "",
         password: "",
@@ -21,7 +21,7 @@ export default class SignUp extends React.Component{
         };
     }
 
-handleDayClick(day){
+handleDayChange(day){
     this.setState({birthday: day});
 }
 
@@ -31,7 +31,7 @@ handleInputChange = event => {
     [name]: value
     
     });
-    console.log('my name is!!!' + value)
+    console.log('my name is!!!' + this.state.value)
 };
 
     handleFormSubmit = event => {
@@ -47,7 +47,7 @@ handleInputChange = event => {
     })
     .then(res => {
     Auth.setToken(res.data.token);
-    this.props.history.push('/user')
+    this.props.history.push('/User')
     console.log(res.data.token)
     })
     .catch(err => console.log(err));
@@ -55,6 +55,7 @@ handleInputChange = event => {
     }
 
     render() {
+        const {birthday} = this.state;
     return (
     <AuthContainer fluid>
     <AuthRow>
@@ -95,14 +96,9 @@ handleInputChange = event => {
     name="aboutMe"
     placeholder='A few words about yourself!'
     />
-
-    <DayPickerInput 
-    name="birthday"
-    onDayClick={this.handleDayClick} />
-    {this.state.birthday ? (
-        <p> is this your birthday?{this.state.birthday.toLocaleDateString()} </p>
-    ) : (<p> please select your birthday </p>)
-    }
+    {birthday && <p>Day: {birthday.toLocaleDateString()}</p>}
+    {!birthday && <p>Please choose a date</p>}
+    <DayPickerInput onDayChange={this.handleDayChange}/>
 
     <FormBtn
     onClick={this.handleFormSubmit}
