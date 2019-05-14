@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from './pages/Home';
 import User from './pages/User';
 import Friends from './pages/Friends';
-import Likes from './pages/Likes';
 import Results from './pages/Results';
+import Likes from './pages/Likes';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 class App extends React.Component {
   render() {
@@ -17,6 +19,8 @@ class App extends React.Component {
             <Route exact path="/friends" component={Friends} />
             <Route exact path="/likes" component={Likes} />
             <Route exact path="/results" component={Results} />
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/signUp" component={SignUp} />
           </Switch>
         </Router>
       </div>

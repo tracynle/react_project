@@ -48,18 +48,6 @@ const styles = theme => ({
   }
 });
 
-// function EtsyProducts(props) {
-//   const arrayHolder = props.etsyArray;
-//   const etsyListItems = arrayHolder.map((etsyArray) =>
-//     //dont change -- '<li>' tag will be edited by me - Matt
-//     <li key={etsyArray.toString()}>{etsyArray}</li>
-//   );
-//   return (
-//     //dont change -- div is holding '<li>'
-//     <ul>{etsyListItems}</ul>
-//   );
-// }
-
 class ProductCard extends Component {
   constructor(props) {
     super(props);

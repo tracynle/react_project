@@ -10,6 +10,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import SearchBar from '../SearchBar';
 
+import { Link } from 'react-router-dom';
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -62,7 +64,7 @@ function NavBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            Wish List
+            <Link to="/" style={{ textDecoration: 'none', color:"white"}}> Wish List</Link>
           </Typography>
           <div className={classes.grow} />
           <div className={classes.search}>

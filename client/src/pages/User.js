@@ -1,5 +1,7 @@
 // ==== NEEDS IMPORT FROM REACT OR PAGE BREAK =====
 import React, { Component } from "react";
+import NavBar from '../components/NavBar';
+
 // ===== BELOW IMPORTS OTHER COMPONENTS USED IN PAGE =====
 
 
@@ -13,6 +15,7 @@ class User extends Component {
     render() {
         return(
             <div>
+                <NavBar></NavBar>
                 User Route
             </div>
         );
