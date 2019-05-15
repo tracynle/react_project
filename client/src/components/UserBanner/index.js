@@ -16,6 +16,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -141,9 +142,11 @@ class UserBanner extends React.Component {
         />
         <List>
           <Divider />
-          <ListItem button onClick={this.wishlistClick}>
-            <ListItemText primary={"My Wishlist"} />
-          </ListItem>
+          <Link to="/FriendsList">
+            <ListItem button>
+              <ListItemText primary={"My Wishlist"} />
+            </ListItem>
+          </Link>
           <Divider />
           <ListItem button onClick={this.friendsClick}>
             <ListItemText primary={"My Friends"} />
