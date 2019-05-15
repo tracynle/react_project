@@ -7,6 +7,7 @@ import Results from './pages/Results';
 import Likes from './pages/Likes';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import PrivateRoute from './components/PrivateRoute';
 
 class App extends React.Component {
   render() {

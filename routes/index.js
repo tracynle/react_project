@@ -4,6 +4,8 @@ let etsyApi = require("../utils/etsyApi");
 
 module.exports = function(app) {
   // --------------- DB User Routes ----------------------------
+  
+  
   // Get all users (READ)
   app.get("/api/user", function(req, res) {
     db.User.findAll({}).then(function(dbUser) {
@@ -65,4 +67,6 @@ module.exports = function(app) {
       console.log("====== Image error =====", error);
     })
   });
+
+// ------- 
 };

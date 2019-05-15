@@ -74,8 +74,11 @@ class SignUp extends React.Component{
 
     handleInputChange = event => { 
         const { name, value } = event.target; 
+        console.log("name" , name)
+        console.log("value", value)
             this.setState({
             [name]: value
+
         });
     };
 
@@ -146,7 +149,7 @@ class SignUp extends React.Component{
                                     type={this.state.showPassword ? 'text' : 'password'}
                                     label="Password"
                                     value={this.state.password}
-                                    onChange={this.handleChange('password')}
+                                    onChange={this.handleChange("password")}
                                   
                                 />
                         
@@ -169,9 +172,12 @@ class SignUp extends React.Component{
                                     variant="outlined"
                                     id="date"
                                     label="Birthday"
+                                    name="birthday"
                                     type="date"
                                     defaultValue="2017-05-24"
                                     className={classes.birthdate}
+                                    value={this.state.birthday}
+                                    onChange={this.handleInputChange}
                                     InputLabelProps={{
                                     shrink: true,
                                     }}

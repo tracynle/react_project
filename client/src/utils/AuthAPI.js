@@ -18,8 +18,10 @@ export default {
         return axios.post("/api/auth/login", loginInfo, headers());
     },
     signup: function(signupInfo) {
+        console.log(signupInfo);
         // send user signup info to API
         return axios.post("/api/auth/signup", signupInfo, headers());
+    
     }
     //Add Delete function for friends and or account
     //Add retrive friends list API from DB, include ID and the axios header

@@ -12,7 +12,7 @@ const db = require("./models");
 // ... other imports 
 const path = require("path");
 
-routes(app);
+app.use(routes);
 
 // Defined middleware here
 app.use(express.urlencoded({ extended: true }));
