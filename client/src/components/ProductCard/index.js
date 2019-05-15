@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import classnames from 'classnames';
+import classnames from 'classnames'; // not sure what this does
 import Card from '@material-ui/core/Card';
 
 import CardMedia from '@material-ui/core/CardMedia';
@@ -20,11 +20,12 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const styles = theme => ({
   card: {
-    maxWidth: 300,
+    maxWidth: 250,
+    margin: "10px",
   },
   media: {
     height: 0,
-    paddingTop: '90.25%', // 16:9
+    paddingTop: '100%', // 16:9
   },
   actions: {
     display: 'flex',
@@ -44,20 +45,14 @@ const styles = theme => ({
   },
   isNotLoved: {
     color: white 
+  },
+  productCardTitle: {
+    padding: "5px"
+  },
+  favAndPricePadding: {
+    padding: "0px"
   }
 });
-
-function EtsyProducts(props) {
-  const arrayHolder = props.etsyArray;
-  const etsyListItems = arrayHolder.map((etsyArray) =>
-    //dont change -- '<li>' tag will be edited by me - Matt
-    <li key={etsyArray.toString()}>{etsyArray}</li>
-  );
-  return (
-    //dont change -- div is holding '<li>'
-    <ul>{etsyListItems}</ul>
-  );
-}
 
 class ProductCard extends Component {
   constructor(props) {
@@ -66,7 +61,7 @@ class ProductCard extends Component {
       expanded: false,
       loved: false,
     };
-  }
+  };
 
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
@@ -81,9 +76,23 @@ class ProductCard extends Component {
     if (!this.state.loved) {
       console.log("I am loved!");
       // post to users loved products list and update the database.
+        /*
+          image
+          title
+          description
+          price
+          tags
+        */
     } else {
       console.log("I am not loved!");
       // delete from users loved products list and update the database.
+        /*
+          image
+          title
+          description
+          price
+          tags
+        */
     }
   }
 
@@ -91,21 +100,18 @@ class ProductCard extends Component {
     const { classes } = this.props;
 
     return (
-      <Card className={classes.card}>
+      <Card id={this.props.userId} className={classes.card}>
         <CardMedia
           className={classes.media}
           image={this.props.imageUrl}
           title={this.props.title}
         />
-        <CardContent>
-          <Typography variant="h5">
+        <CardContent className={classes.productCardTitle}>
+          <Typography variant="h6">
             {this.props.title}
           </Typography>
-          <Typography component="p">
-            {this.props.description}
-          </Typography>
         </CardContent>
-        <CardActions className={classes.actions} disableActionSpacing>
+        <CardActions className={classes.actions && classes.favAndPricePadding} disableActionSpacing>
           <IconButton className={classnames(
             classes.isNotLoved, {
             [classes.isLoved]: this.state.loved
@@ -131,10 +137,10 @@ class ProductCard extends Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography variant='h6'>Tags:</Typography>
-            <EtsyProducts 
-              etsyArray = {this.props.etsyTags}
-            />
+            <Typography variant='h6'>Description:</Typography>
+            <Typography component="p">
+            {this.props.description}
+            </Typography>
           </CardContent>
         </Collapse>
       </Card>

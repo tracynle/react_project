@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Home from './pages/Home';
 import User from './pages/User';
 import Friends from './pages/Friends';
+import FriendsList from './pages/FriendsList';
 import Results from './pages/Results';
 import Likes from './pages/Likes';
 // import NavBar from './components/NavBar';
@@ -12,14 +13,15 @@ class App extends React.Component {
   render() {
     return  (
       <div>
-      <Router>
-      <Switch>
+        <Router>
+          <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/User" component={User} />
-            <Route exact path="/Friends" component={Friends} />
-            <Route exact path="/Likes" component={Likes} />
+            <Route exact path="/user" component={User} />
+            <Route exact path="/friends" component={Friends} />
+            <Route exact path="/friendsList" component={FriendsList} />
+            <Route exact path="/likes" component={Likes} />
             <Route exact path="/results" component={Results} />
-            </Switch>
+          </Switch>
         </Router>
       </div>
     );

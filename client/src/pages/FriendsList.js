@@ -1,23 +1,21 @@
 // ==== NEEDS IMPORT FROM REACT OR PAGE BREAK =====
 import React, { Component } from "react";
-import UserBanner from "../components/UserBanner/index";
+import ListFriends from '../components/ListFriends/index';
 // ===== BELOW IMPORTS OTHER COMPONENTS USED IN PAGE =====
 
-// ===== HOLDS STATE, FUNCTIONS FOR PAGE, AND RENDER FUNCTION =====
-class User extends Component {
-    // === STATE ===
 
-    // === GENERAL FUNCTIONS ===
+// ===== HOLDS STATE, FUNCTIONS FOR PAGE, AND RENDER FUNCTION =====
+class FriendsList extends Component {
+    // === STATE ===
 
     // === RENDER FUNCTION === 
     render() {
         return(
-            <div>
-                <UserBanner />
-            </div>
+            <ListFriends/>
         );
     }
 }
 
-// ===== EXPORTS `User` PAGE RENDER FUNCTION =====
-export default User;
+
+// ===== EXPORTS `Friends` PAGE RENDER FUNCTION =====
+export default FriendsList

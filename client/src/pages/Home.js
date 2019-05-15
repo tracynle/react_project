@@ -1,7 +1,6 @@
 // ==== NEEDS IMPORT FROM REACT OR PAGE BREAK =====
 import React, { Component } from "react"; // imports the component "Component" from react's "Component.js" file
 
-import NavBar from '../components/NavBar';
 // ===== BELOW IMPORTS OTHER COMPONENTS USED IN PAGE =====
 
 
@@ -23,7 +22,6 @@ class Home extends Component {
     render() {
         return(
             <div>
-            <NavBar {...this.props}></NavBar>
                 Home Route
             </div>
         );
