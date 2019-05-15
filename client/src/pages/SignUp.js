@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 import 'react-day-picker/lib/style.css';
 
-import NavBar from '../components/NavBar';
 
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
@@ -18,12 +17,17 @@ import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
+import Grid from '@material-ui/core/Grid';
 
 const styles = {
     card: {
+        margin: 'auto',
+        display: 'block',
         maxWidth: 600,
-        height: 550
-    },
+        maxHeight: 700,
+        marginTop: 60
+    
+      },
     user: {
         paddingBottom: 20,
         paddingTop: 10,
@@ -104,100 +108,94 @@ class SignUp extends React.Component{
 
         return (
             <div styles={ styles }>
-                <NavBar></NavBar>
-                <Card className={ classes.card }>
-                    <CardContent>
-                        
-                        <Typography gutterBottom variant='h5' component='h2' color='textSecondary' style={{ textAlign: 'center' }}>
-                            Sign Up with Wish List
-                        </Typography>
-                        <form>
-                           
-                            <div className= {(classes.form, classes.user) } style={{ textAlign: 'center' }} >
-                                <TextField 
-                                    value={this.state.firstName}
-                                    variant="outlined"
-                                    onChange={this.handleInputChange}
-                                    name="firstName"
-                                    label="First Name"
-                                    /> 
-                                    <TextField
-                                        value={this.state.lastName}
-                                        variant="outlined"
-                                        onChange={this.handleInputChange}
-                                        label="Last Name"
-                                        name="lastName"
-                                    />
-                            </div>
-                            <div className= {(classes.form, classes.user) } style={{ textAlign: 'center' }} >
-                            
-                                <TextField
-                                    value={this.state.username}
-                                    variant="outlined"
-                                    onChange={this.handleInputChange}
-                                    name="username"
-                                    label="User Name"
-                                    placeholder="(required)"
-                                />
-                                <TextField
-                                    id="outlined-adornment-password"
-                                    className={(classes.margin, classes.textField)}
-                                    variant="outlined"
-                                    type={this.state.showPassword ? 'text' : 'password'}
-                                    label="Password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange('password')}
-                                  
-                                />
-                        
-                            </div>
-                            <div className= { classes.form } style={{ textAlign: 'center' }}>
-                                <TextField
-                                    className= { classes.about }
-                                    value={this.state.aboutMe}
-                                    onChange={this.handleInputChange}
-                                    variant="outlined"
-                                    name="aboutMe"
-                                    label="About You"
-                                    multiline
-                                    rows="4"
-                                    placeholder='Write a few words about yourself'
-                                />
-                            </div>
-                            <div className= { classes.form } style={{ textAlign: 'center' }}>
-                                <TextField
-                                    variant="outlined"
-                                    id="date"
-                                    label="Birthday"
-                                    type="date"
-                                    defaultValue="2017-05-24"
-                                    className={classes.birthdate}
-                                    InputLabelProps={{
-                                    shrink: true,
-                                    }}
-                                />
-                                <Button
-                                    variant="contained"
-                                    component="label"
-                                    >
-                                    Upload File
-                                    <input
-                                        type="file"
-                                        style={{ display: "none" }}
-                                    />
-                                </Button>
-
-                            </div>
-                            <CardActions style={{justifyContent: 'center'}}>
-                                <Link to='/user' style={{ textDecoration: 'none' }} >
-                                    <Button variant='contained' size='medium' color='primary' onClick={this.handleFormSubmit} >
-                                        Enter
-                                    </Button>
-                                </Link>
-                            </CardActions>
-                        </form>
-                    </CardContent>
-                </Card>                    
+                <Grid item xs={6} sm container style={{ textAlign: 'center' }}>
+                    <Grid item xs container direction="column" spacing={16}>
+                        <Grid item xs>    
+                            <Card className={ classes.card }>
+                            <CardContent>
+                                
+                                <Typography gutterBottom variant='h5' component='h2' color='textSecondary' style={{ textAlign: 'center' }}>
+                                    Sign Up with Wish List
+                                </Typography>
+                                <form>
+                                
+                                    <div className= {(classes.form, classes.user) } style={{ textAlign: 'center' }} >
+                                        <TextField 
+                                            value={this.state.firstName}
+                                            variant="outlined"
+                                            onChange={this.handleInputChange}
+                                            name="firstName"
+                                            label="First Name"
+                                            /> 
+                                            <TextField
+                                                value={this.state.lastName}
+                                                variant="outlined"
+                                                onChange={this.handleInputChange}
+                                                label="Last Name"
+                                                name="lastName"
+                                            />
+                                    </div>
+                                    <div className= {(classes.form, classes.user) } style={{ textAlign: 'center' }} >
+                                    
+                                        <TextField
+                                            value={this.state.username}
+                                            variant="outlined"
+                                            onChange={this.handleInputChange}
+                                            name="username"
+                                            label="User Name"
+                                            placeholder="(required)"
+                                        />
+                                        <TextField
+                                            id="outlined-adornment-password"
+                                            className={(classes.margin, classes.textField)}
+                                            variant="outlined"
+                                            type={this.state.showPassword ? 'text' : 'password'}
+                                            label="Password"
+                                            value={this.state.password}
+                                            onChange={this.handleChange('password')}
+                                        
+                                        />
+                                
+                                    </div>
+                                    <div className= { classes.form } style={{ textAlign: 'center' }}>
+                                        <TextField
+                                            className= { classes.about }
+                                            value={this.state.aboutMe}
+                                            onChange={this.handleInputChange}
+                                            variant="outlined"
+                                            name="aboutMe"
+                                            label="About You"
+                                            multiline
+                                            rows="4"
+                                            placeholder='Write a few words about yourself'
+                                        />
+                                    </div>
+                                    <div className= { classes.form } style={{ textAlign: 'center' }}>
+                                        <TextField
+                                            variant="outlined"
+                                            id="date"
+                                            label="Birthday"
+                                            type="date"
+                                            defaultValue="2017-05-24"
+                                            className={classes.birthdate}
+                                            InputLabelProps={{
+                                            shrink: true,
+                                            }}
+                                        />
+                                    </div>
+                                    <CardActions style={{justifyContent: 'center'}}>
+                                        <Link to='/user' style={{ textDecoration: 'none' }} >
+                                            <Button variant='contained' size='medium' color='primary' onClick={this.handleFormSubmit} >
+                                                Enter
+                                            </Button>
+                                        </Link>
+                                    </CardActions>
+                                </form>
+                            </CardContent>
+                            </Card>
+                        </Grid>  
+                    </Grid>     
+                </Grid>                 
             </div>
         );
     }

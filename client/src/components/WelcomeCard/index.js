@@ -14,65 +14,72 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
   card: {
+    margin: 'auto',
+    display: 'block',
     maxWidth: 600,
-    height: 550,
+    maxHeight: 700,
+    marginTop: 60
 
-  },
-  media: {
-    height: 370,
   },
   button: {
     margin: theme.spacing.unit,
+  },
+  img: {
+    margin: 'auto',
+    display: 'block',
+    maxWidth: 400,
+    maxHeight: 400,
   },
 });
 
 function MediaCard(props) {
   const { classes } = props;
   return (
-    <Grid
-      container
-      justify='center'
-      alignItems='center'
-    >
-      <Card className={classes.card} style={{ textAlign: 'center' }}>
-        
+    <div >
+    <Grid item xs={6} sm container style={{ textAlign: 'center' }}>
+      <Grid item xs container direction="column" spacing={16}>
+      <Grid item xs>
+        <Card className={classes.card}>
           <CardActionArea>
             <CardMedia
-              className={classes.media}
-              image='../../../images/birthdaycake.jpg'
+              className={classes.image}
               title='Birthday Cake'
             />
             <CardContent>
               <Typography gutterBottom variant='h5' component='h2'>
-              Welcome to Wishlist!
+              <img className={classes.img} alt="complex" src='../../../images/birthdaycake.jpg'></img>
+                Welcome to Wishlist!
               </Typography>
               <Typography component='p'>
-              Making Birthdays Memorable
+                Making Birthdays Memorable
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions style={{ textAlign: 'center' }}>
-          <Grid
-            container
-            direction='row'
-            justify='center'
-            alignItems='center'
-          >
-            <Link to='/login' style={{ textDecoration: 'none' }}>
-              <Button className={classes.button} variant='contained' size='medium' color='primary' >
-                Login
-              </Button>
-            </Link>
-            <Link to='/signup' style={{ textDecoration: 'none' }}>
-              <Button className={classes.button} variant='contained' size='medium' color='primary'>
-                Signup
-              </Button>
-            </Link>
-          </Grid>
+            <Grid 
+              container
+              direction='row'
+              justify='center'
+              alignItems='center'
+            >
+              <Link to='/login' style={{ textDecoration: 'none' }}>
+                <Button className={classes.button} variant='contained' size='medium' color='primary' >
+                  Login
+                </Button>
+              </Link>
+              <Link to='/signup' style={{ textDecoration: 'none' }}>
+                <Button className={classes.button} variant='contained' size='medium' color='primary'>
+                  Signup
+                </Button>
+              </Link>
+            </Grid>
           </CardActions>
+        </Card>
+        </Grid> 
+        </Grid>
+      </Grid>
+    </div>
       
-      </Card>
-    </Grid>
   );
 }
 
