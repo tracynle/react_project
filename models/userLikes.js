@@ -1,19 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
-    let userLikes = sequelize.define("userLikes", {
+    let UserLikes = sequelize.define("UserLikes", {
       category: DataTypes.TEXT,
       currency: DataTypes.INTEGER,
       description: DataTypes.TEXT,
       title: DataTypes.TEXT
     });
   
-    userLikes.associate = function(models) {
-      userLikes.belongsTo(models.User, {
+    UserLikes.associate = function(models) {
+      UserLikes.belongsTo(models.Users, {
         foreignKey: {
           allowNull: false
         }
       });
     };
   
-    return userLikes;
+    return UserLikes;
 };
   

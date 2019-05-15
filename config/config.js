@@ -5,9 +5,6 @@ module.exports = {
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASS,
     database: process.env.MYSQL_DB,
-    "username": "root",
-    "password": null,
-    "database": "react_project",
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mysql"
@@ -27,7 +24,7 @@ module.exports = {
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mysql",
-    "use_env_variable": "JAWSDB_URL",
+    "use_env_variable": "JAWS_DB_URL",
 
   }
 };

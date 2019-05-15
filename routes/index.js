@@ -6,14 +6,14 @@ module.exports = function(app) {
   // --------------- DB User Routes ----------------------------
   // Get all users (READ)
   app.get("/api/user", function(req, res) {
-    db.User.findAll({}).then(function(dbUser) {
+    db.Users.findAll({}).then(function(dbUser) {
       res.json(dbUser);
     });
   });
   // Create new user > Add to db (CREATE)
   app.post("/api/user", function(req, res) {
     //db.tableName.create(req.body).then(function(dbName) {});
-    db.User.create(req.body).then(function(dbUser) {
+    db.Users.create(req.query).then(function(dbUser) {
       // console.log(res.body);
       console.log(dbUser);
       // console.log(res);
@@ -24,7 +24,7 @@ module.exports = function(app) {
   // -------------- DB userLikes Routes --------------------
   // Get all likes from the user
   app.get("/api/likes/", function(req, res) {
-    db.userLikes.findAll({}).then(function(dbUserLikes) {
+    db.UserLikes.findAll({}).then(function(dbUserLikes) {
       res.json(dbUserLikes);
     });
   });
@@ -33,7 +33,7 @@ module.exports = function(app) {
   app.get("/api/user/likes", function(req, res) {
     console.log("PRINT TEST");
     console.log(req.query.UserId);
-    db.userLikes.findAll({
+    db.UserLikes.findAll({
       where: {
         UserId: req.query.UserId // where the foreign key is
       }

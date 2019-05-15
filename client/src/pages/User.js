@@ -7,16 +7,12 @@ import NavBar from '../components/NavBar';
 
 // ===== HOLDS STATE, FUNCTIONS FOR PAGE, AND RENDER FUNCTION =====
 class User extends Component {
-    // === STATE ===
-
-    // === GENERAL FUNCTIONS ===
 
     // === RENDER FUNCTION === 
     render() {
         return(
             <div>
-                <NavBar></NavBar>
-                User Route
+                <NavBar history={this.props.history}></NavBar>                
             </div>
         );
     }

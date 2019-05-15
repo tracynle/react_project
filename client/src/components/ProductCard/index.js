@@ -21,7 +21,7 @@ import axios from 'axios';
 
 const styles = theme => ({
   card: {
-    maxWidth: 200,
+    maxWidth: 400,
   },
   media: {
     height: 0,
@@ -107,7 +107,7 @@ class ProductCard extends Component {
           title={this.props.title}
         />
         <CardContent>
-          <Typography variant="h7">
+          <Typography variant="h6">
             {this.props.title}
           </Typography>
         </CardContent>
@@ -121,7 +121,7 @@ class ProductCard extends Component {
           >
             <FavoriteIcon />
           </IconButton>
-          <Typography variant='h7'>
+          <Typography variant='h6'>
             {"$" + parseFloat(this.props.price)}
           </Typography>
           <IconButton

@@ -4,13 +4,18 @@ var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
 var basename = path.basename(module.filename);
-var env = process.env.NODE_ENV || "development";
+// var env = process.env.NODE_ENV || "development";
+// seems to only get to developement env, not the other one
+var env = "development";
+
 var config = require(__dirname + "/../config/config.js")[env];
 var db = {};
 
 if (config.use_env_variable) {
+  console.log("AAAAAA");
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
+  console.log("BBBBBB");
   var sequelize = new Sequelize(
     config.database,
     config.username,
@@ -27,6 +32,7 @@ fs.readdirSync(__dirname)
   })
   .forEach(function(file) {
     var model = sequelize.import(path.join(__dirname, file));
+    console.log(`Registering table ${model.name}`);
     db[model.name] = model;
   });
 
