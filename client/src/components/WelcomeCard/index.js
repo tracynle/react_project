@@ -18,7 +18,7 @@ const styles = theme => ({
     display: 'block',
     maxWidth: 600,
     maxHeight: 700,
-    marginTop: 60
+    marginTop: 60,
 
   },
   button: {
@@ -29,8 +29,11 @@ const styles = theme => ({
     display: 'block',
     maxWidth: 400,
     maxHeight: 400,
+    marginBottom: 20,
+    marginTop: 20
   },
 });
+
 
 function MediaCard(props) {
   const { classes } = props;
@@ -47,8 +50,8 @@ function MediaCard(props) {
             />
             <CardContent>
               <Typography gutterBottom variant='h5' component='h2'>
-              <img className={classes.img} alt="complex" src='../../../images/birthdaycake.jpg'></img>
-                Welcome to Wishlist!
+                <img className={classes.img} alt="complex" src='../../../images/birthdaycake.jpg'></img>
+                  Welcome to Wishlist!
               </Typography>
               <Typography component='p'>
                 Making Birthdays Memorable

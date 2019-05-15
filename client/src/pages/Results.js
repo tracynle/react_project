@@ -15,10 +15,10 @@ class Results extends Component {
     render() {
         return(
             <div>
-            <NavBar></NavBar>
+                <NavBar></NavBar>
                 {this.props.location.state.items.map(item => { 
                     return (
-                       <ProductCard
+                        <ProductCard
                             key={item.listing_id}
                             listing_id={item.listing_id}
                             title={item.title}
