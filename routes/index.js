@@ -23,14 +23,27 @@ module.exports = function(app) {
 
   // -------------- DB userLikes Routes --------------------
   // Get all likes from the user
-  app.get("/api/likes/", function(req, res) {
+  app.get("/api/userLikes/", function(req, res) {
     db.UserLikes.findAll({}).then(function(dbUserLikes) {
       res.json(dbUserLikes);
     });
   });
+
+  // Create new user > Add to db (CREATE)
+  app.post("/api/userLikes", function(req, res) {
+    //db.tableName.create(req.body).then(function(dbName) {});
+    db.Users.create(req.query).then(function(dbUser) {
+      // console.log(res.body);
+      console.log(dbUser);
+      // console.log(res);
+      res.json(dbUser);
+    });
+  });
+
+  
   
   // -------------- DB user info with likes --------------------
-  app.get("/api/user/likes", function(req, res) {
+  app.get("/api/user/userLikes", function(req, res) {
     console.log("PRINT TEST");
     console.log(req.query.UserId);
     db.UserLikes.findAll({

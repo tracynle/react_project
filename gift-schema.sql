@@ -16,7 +16,7 @@ INSERT INTO Users (userName, password, email, birthday) VALUES ("1", "2", "3", "
 
 SELECT * FROM Users;
 
-CREATE TABLE userLikes ( 
+CREATE TABLE UserLikes ( 
 	id INT NOT NULL AUTO_INCREMENT,
     category VARCHAR (40) NOT NULL,
     currency INT NOT NULL,
@@ -28,14 +28,13 @@ CREATE TABLE userLikes (
     
 );
 
-INSERT INTO userLikes (category, currency, description, title, userId) VALUES ("1", "2", "3", "4", "111");
+INSERT INTO UserLikes (category, currency, description, title, userId) VALUES ("1", "2", "3", "4", "111");
 
 
-SELECT * FROM userLikes;
+SELECT * FROM UserLikes;
 
 alter table Users add column createdAt dateTime;
 alter table Users add column updatedAt dateTime;
 
-
--- alter table userLikes add column createdAt dateTime;
--- alter table userLikes add column updatedAt dateTime;
+alter table UserLikes add column createdAt dateTime;
+alter table UserLikes add column updatedAt dateTime;
