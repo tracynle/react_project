@@ -16,6 +16,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -113,7 +114,7 @@ class UserBanner extends React.Component {
     }
     return UserBannerFriendsClick();
   }
-  
+
 
   savedWishesClick = (e) => {
     e.preventDefault();
@@ -133,25 +134,25 @@ class UserBanner extends React.Component {
 
     const drawer = (
       <div>
-        <UserCard 
-            UserImageUrl={"http://imgmr.com/wp-content/uploads/2016/02/pokemon-4-1200x0.jpg"}
-            UserName={"Ash Ketchum"}
-            UserBday={"5/26/2019"}
-            UserPhrase={"Let me dive into your Misty"}
+        <UserCard
+          UserImageUrl={"http://imgmr.com/wp-content/uploads/2016/02/pokemon-4-1200x0.jpg"}
+          UserName={"Ash Ketchum"}
+          UserBday={"5/26/2019"}
+          UserPhrase={"Let me dive into your Misty"}
         />
         <List>
           <Divider />
-          <ListItem button onClick={this.wishlistClick}>
-            <ListItemText primary={"My Wishlist"} />
-          </ListItem>
+          <Link to="/user">
+            <ListItem button>
+              <ListItemText primary={"My Wishlist"} />
+            </ListItem>
+          </Link>
           <Divider />
-          <ListItem button onClick={this.friendsClick}>
-            <ListItemText primary={"My Friends"} />
-          </ListItem>
-          <Divider />
-          <ListItem button onClick={this.savedWishesClick}>
-            <ListItemText primary={"Saved Friends Wishes"} />
-          </ListItem>
+          <Link to="/FriendsList">
+            <ListItem button>
+              <ListItemText primary={"My Friends"} />
+            </ListItem>
+          </Link>
           <Divider />
         </List>
       </div>
@@ -208,7 +209,7 @@ class UserBanner extends React.Component {
           <Grid container spacing={16} justify="flex-start">
             {mapEtsyProducts}
           </Grid>
-          <div className="below-main"></div> 
+          <div className="below-main"></div>
         </main>
       </div>
     );

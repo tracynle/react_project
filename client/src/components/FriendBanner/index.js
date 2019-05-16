@@ -16,6 +16,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ProductCard from '../ProductCard/index';
 import FriendProfile from '../FriendProfile/index';
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -130,23 +131,29 @@ class FriendsBanner extends React.Component {
     const drawer = (
       <div>
         <FriendProfile
-        FriendImageUrl={"http://imgmr.com/wp-content/uploads/2016/02/pokemon-4-1200x0.jpg"}
-        FriendName={"Ash Ketchum"}
-        FriendBday={"5/26/2019"}
+          FriendImageUrl={"https://www.hdwallpapers.in/download/dc_comics_the_flash-2048x1536.jpg"}
+          FriendName={"Barry Allen"}
+          FriendBday={"7/29/1993"}
         />
         <List>
           <Divider />
-          <ListItem button onClick={this.ProfileClick}>
-            <ListItemText primary={"My Profile"} />
-          </ListItem>
+          <Link to="/user">
+            <ListItem button>
+              <ListItemText primary={"My Profile"} />
+            </ListItem>
+          </Link>
           <Divider />
-          <ListItem button onClick={this.WishlistClick}>
-            <ListItemText primary={"My Wishlist"} />
-          </ListItem>
+          <Link to="/USER">
+            <ListItem button>
+              <ListItemText primary={"My Wishlist"} />
+            </ListItem>
+          </Link>
           <Divider />
-          <ListItem button onClick={this.FriendsListClick}>
-            <ListItemText primary={"My Friends"} />
-          </ListItem>
+          <Link to="/friendslist">
+            <ListItem button>
+              <ListItemText primary={"My Friends"} />
+            </ListItem>
+          </Link>
           <Divider />
         </List>
       </div>

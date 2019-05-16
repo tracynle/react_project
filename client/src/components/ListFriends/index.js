@@ -19,6 +19,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { Link } from 'react-router-dom';
 
 // DRAWER WIDTH
 const drawerWidth = 240;
@@ -263,13 +264,19 @@ class ListFriends extends Component {
           </div>
           <List>
             <Divider />
-            <ListItem button onClick={this.profileClick}>
-              <ListItemText primary={"My Profile"} />
-            </ListItem>
+            <Link to="/user">
+              <ListItem button>
+                <ListItemText primary={"My Profile"} />
+              </ListItem>
+            </Link>
+
             <Divider />
-            <ListItem button onClick={this.wishlistClick}>
-              <ListItemText primary={"My Wishlist"} />
-            </ListItem>
+            <Link to="/USER">
+              <ListItem button>
+                <ListItemText primary={"My Wishlist"} />
+              </ListItem>
+            </Link>
+
             <Divider />
           </List>
         </Drawer>
