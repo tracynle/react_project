@@ -12,11 +12,11 @@ const db = require("./models");
 // ... other imports 
 const path = require("path");
 
-routes(app);
-
 // Defined middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+routes(app);
 //serve up static assests on heroku
 console.log(`process.env.NODE_ENV ==>> ${process.env.NODE_ENV}`);
 if (process.env.NODE_ENV === "production") {
@@ -32,6 +32,10 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-app.listen(PORT, function() {
-    console.log(`🌎 API Server Listening on Port ${PORT}!`)
-});
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync({ force: true }).then(function() {
+    app.listen(PORT, function() {
+      console.log("App listening on PORT " + PORT);
+    });
+  });

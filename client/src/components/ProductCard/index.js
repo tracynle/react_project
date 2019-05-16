@@ -137,7 +137,7 @@ class ProductCard extends Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography variant='p'>Description:{this.props.description}</Typography>
+            <Typography component="p">Description:{this.props.description}</Typography>
           </CardContent>
         </Collapse>
       </Card>

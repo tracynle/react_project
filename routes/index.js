@@ -4,7 +4,7 @@ let etsyApi = require("../utils/etsyApi");
 
 module.exports = function(app) {
   // --------------- DB User Routes ----------------------------
-  // Get all users (READ)
+  // Get/findALL all users (READ)
   app.get("/api/user", function(req, res) {
     db.Users.findAll({}).then(function(dbUser) {
       res.json(dbUser);
@@ -13,7 +13,7 @@ module.exports = function(app) {
   // Create new user > Add to db (CREATE)
   app.post("/api/user", function(req, res) {
     //db.tableName.create(req.body).then(function(dbName) {});
-    db.Users.create(req.query).then(function(dbUser) {
+    db.Users.create(req.body).then(function(dbUser) {
       // console.log(res.body);
       console.log(dbUser);
       // console.log(res);
@@ -31,17 +31,17 @@ module.exports = function(app) {
 
   // Create new user > Add to db (CREATE)
   app.post("/api/userLikes", function(req, res) {
+    console.log("ZZZZZZZZZ");
+    console.log(req.body);
     //db.tableName.create(req.body).then(function(dbName) {});
-    db.Users.create(req.query).then(function(dbUser) {
+    db.UserLikes.create(req.body).then(function(dbUserLikes) {
       // console.log(res.body);
-      console.log(dbUser);
+      console.log(dbUserLikes);
       // console.log(res);
-      res.json(dbUser);
+      res.json(dbUserLikes);
     });
   });
 
-  
-  
   // -------------- DB user info with likes --------------------
   app.get("/api/user/userLikes", function(req, res) {
     console.log("PRINT TEST");
@@ -54,7 +54,35 @@ module.exports = function(app) {
       res.json(dbUserLikes);
     });
   });
+  
+  // =============================================== //
+  // Create new friendship > Add to db (CREATE)
+  app.post("/api/friends", function(req, res) {
+    console.log("ZZZZZZZZZ");
+    console.log(req.body);
+    console.log(Object.keys(db.Users));
+    //db.tableName.create(req.body).then(function(dbName) {});
+    db.Users.findOne({
+      where: {
+        id: req.body.UserId1
+      }
+    }).then(function(User1) {
+      db.Users.findOne({
+        where: {
+          id: req.body.UserId2
+        }
+      })
+      .then(function(User2) {
+        console.log("ADDING USERS========")
+        console.log(User1.addFriend1);
+        console.log(User1.addFriend2);
+        User1.addFriend1(User2);
+        res.json({});
+      })
+    });
+  });
 
+  // =============================================== //
   // ------ Etsy Api Results route -------
   app.get("/api/search/", function(req, res){
     console.log("Search results:");

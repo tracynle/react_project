@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     let UserLikes = sequelize.define("UserLikes", {
-      category: DataTypes.TEXT,
+      category: DataTypes.STRING,
       currency: DataTypes.INTEGER,
       description: DataTypes.TEXT,
-      title: DataTypes.TEXT
+      title: DataTypes.STRING
     });
   
     UserLikes.associate = function(models) {
