@@ -2,12 +2,11 @@
 import React from "react";
 // ===== BELOW IMPORTS OTHER COMPONENTS USED IN PAGE =====
 
-
 // ===== RENDERS ONE DIV THAT RENDERS ALL PAGE COMPONENTS =====
 function Likes() {
     return(
         <div>
-            Likes Route
+            Likes Page
         </div>
     );
 }

@@ -19,6 +19,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 
+import NavBar from '../components/NavBar';
+
 const styles = {
     card: {
         margin: 'auto',
@@ -45,6 +47,7 @@ const styles = {
     birthdate: {
         width: 400
     },
+    
     
 };
 
@@ -108,13 +111,14 @@ class SignUp extends React.Component{
 
         return (
             <div styles={ styles }>
+            <NavBar history={this.props.history}><Typography>Wish List></Typography></NavBar>                
                 <Grid item xs={6} sm container style={{ textAlign: 'center' }}>
                     <Grid item xs container direction="column" spacing={16}>
                         <Grid item xs>    
                             <Card className={ classes.card }>
                             <CardContent>
                                 
-                                <Typography gutterBottom variant='h5' component='h2' color='textSecondary' style={{ textAlign: 'center' }}>
+                                <Typography gutterBottom variant='h5' component='h2' color='textPrimary' style={{ textAlign: 'center' }}>
                                     Sign Up with Wish List
                                 </Typography>
                                 <form>

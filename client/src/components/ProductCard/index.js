@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import classnames from 'classnames';
+import classnames from 'classnames'; // not sure what this does
 import Card from '@material-ui/core/Card';
 
 import CardMedia from '@material-ui/core/CardMedia';
@@ -21,11 +21,12 @@ import axios from 'axios';
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    maxWidth: 250,
+    margin: "10px",
   },
   media: {
     height: 0,
-    paddingTop: '90.25%', // 16:9
+    paddingTop: '100%', // 16:9
   },
   actions: {
     display: 'flex',
@@ -45,6 +46,12 @@ const styles = theme => ({
   },
   isNotLoved: {
     color: white 
+  },
+  productCardTitle: {
+    padding: "5px"
+  },
+  favAndPricePadding: {
+    padding: "0px"
   }
 });
 
@@ -56,7 +63,7 @@ class ProductCard extends Component {
       loved: false,
       image: ""
     };
-  }
+  };
 
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
@@ -71,14 +78,31 @@ class ProductCard extends Component {
     if (!this.state.loved) {
       console.log("I am loved!");
       // post to users loved products list and update the database.
+        /*
+          image
+          title
+          description
+          price
+          tags
+        */
     } else {
       console.log("I am not loved!");
       // delete from users loved products list and update the database.
+        /*
+          image
+          title
+          description
+          price
+          tags
+        */
     }
   }
 
   // Make an Ajax call to retrieve Etsy's images
-  // Images will be rendered in the Results.js file (will move to User.js)
+  // Images will be rendered onto User's page
+  // save in userbanner.
+  // this setState will update into new cards and update the state
+
   componentDidMount = () => {
     axios.get('/api/images', {
       params: {
@@ -100,18 +124,18 @@ class ProductCard extends Component {
     const { classes } = this.props;
 
     return (
-      <Card className={classes.card}>
+      <Card id={this.props.userId} className={classes.card}>
         <CardMedia
           className={classes.media}
           image={this.state.image}
           title={this.props.title}
         />
-        <CardContent>
+        <CardContent className={classes.productCardTitle}>
           <Typography variant="h6">
             {this.props.title}
           </Typography>
         </CardContent>
-        <CardActions className={classes.actions} disableActionSpacing>
+        <CardActions className={classes.actions && classes.favAndPricePadding} disableActionSpacing>
           <IconButton className={classnames(
             classes.isNotLoved, {
             [classes.isLoved]: this.state.loved
@@ -137,7 +161,10 @@ class ProductCard extends Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography component="p">Description:{this.props.description}</Typography>
+            <Typography variant='h6'>Description:</Typography>
+            <Typography component="p">
+            {this.props.description}
+            </Typography>
           </CardContent>
         </Collapse>
       </Card>

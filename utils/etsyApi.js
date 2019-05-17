@@ -4,7 +4,7 @@ let axios = require("axios");
 // It accepts a "query" or term to search the result api for
 
 // ----------- Etsy Listings --------
-const baseListingUrl = "https://openapi.etsy.com/v2/listings/active?limit=10&offset=0";
+const baseListingUrl = "https://openapi.etsy.com/v2/listings/active?limit=12&offset=0";
 const APIKEY = "api_key=rdym62jwh3l5iv0m0va5cx0c";
 
 // ----------- Etsy Images -----------
@@ -16,7 +16,7 @@ let exportStuff = {
     return axios.get(baseListingUrl + "&tags=" + query + "&" + APIKEY);
   },
   images: function(query) {
-    return axios.get(baseImageUrl + query + "/images?limit=10&offset=0&" + APIKEY);
+    return axios.get(baseImageUrl + query + "/images?limit=12&offset=0&" + APIKEY);
   }
 };
 

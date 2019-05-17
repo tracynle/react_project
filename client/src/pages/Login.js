@@ -16,6 +16,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 
+import NavBar from '../components/NavBar';
+
 const styles = {
     card: {
         margin: 'auto',
@@ -64,12 +66,13 @@ class Login extends React.Component {
         const { classes } = this.props;
         return (
             <div styles={ styles }>
+            <NavBar history={this.props.history}></NavBar>                
                 <Grid item xs={6} sm container style={{ textAlign: 'center' }}>
                     <Grid item xs container direction="column" spacing={16}>
                         <Grid item xs>                
                             <Card className={ classes.card } style={{ textAlign: 'center' }}>
                                 <CardContent>
-                                    <Typography color='textSecondary' gutterBottom variant='h5' component='h2' style={{ textAlign: 'center' }}>
+                                    <Typography color='textPrimary' gutterBottom variant='h5' component='h2' style={{ textAlign: 'center' }}>
                                         Login 
                                     </Typography>
                                     <form> 
