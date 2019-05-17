@@ -1,6 +1,4 @@
 # Etsy API Info
-- KEYSTRING: zvc75b5f3o9khob7e0kd7nza
-- SHARED SECRET: qb2hj6ca8r
 
 
 # Etsy website
