@@ -42,6 +42,14 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/api/userLikes/:id", function(request, response) {
+    db.UserLikes.destroy({
+      where: {
+        UserId: request.params.id
+      }
+    })
+  })
+
   // -------------- DB user info with likes --------------------
   app.get("/api/user/userLikes", function(req, res) {
     console.log("PRINT TEST");
