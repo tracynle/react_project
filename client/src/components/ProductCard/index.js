@@ -100,14 +100,15 @@ class ProductCard extends Component {
       });
     } else {
       console.log("I am not loved!");
-      // delete from users loved products list and update the database.
-        /*
-          image
-          title
-          description
-          price
-          tags
-        */
+
+      axios.delete("/api/userLikes/" + 1).then(data => {
+        console.log("======= This is Data =======");
+        console.log(data);
+      }).catch(err => {
+        console.log("======= This is Error =======");
+        console.log(err);
+      })
+
     }
   }
 
