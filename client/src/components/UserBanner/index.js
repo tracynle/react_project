@@ -216,7 +216,6 @@ class UserBanner extends React.Component {
                       key={item.listing_id}
                       listing_id={item.listing_id}
                       title={item.title}
-                      tags={item.tags}
                       price={item.price}
                       description={item.description}
                   />

@@ -77,6 +77,11 @@ class ProductCard extends Component {
   isLoveClicked = () => {
     if (!this.state.loved) {
       console.log("I am loved!");
+      console.log("THIS IS LISTING ID " + this.props.listing_id);
+      console.log("THIS IS IMAGE " + this.state.image);
+      console.log("THIS IS TITLE " + this.props.title);
+      console.log("THIS IS PRICE " + this.props.price);
+      console.log("THIS IS DESCRIP " + this.props.description);
       // post to users loved products list and update the database.
         /*
           image
