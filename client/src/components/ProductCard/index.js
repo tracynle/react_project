@@ -82,14 +82,22 @@ class ProductCard extends Component {
       console.log("THIS IS TITLE " + this.props.title);
       console.log("THIS IS PRICE " + this.props.price);
       console.log("THIS IS DESCRIP " + this.props.description);
-      // post to users loved products list and update the database.
-        /*
-          image
-          title
-          description
-          price
-          tags
-        */
+      axios.post("/api/userLikes/",{
+        //taking the current product cards information to post to the UserLikes table for it to later render in the wishlist spot
+        image: this.state.image,
+        title: this.props.title,
+        price: this.props.price,
+        description: this.props.description,
+        UserId: 1
+      })
+      .then(function (response) {
+        console.log("=============================RESPONSE==============================");
+        console.log("=============================RESPONSE==============================");
+        console.log(response);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
     } else {
       console.log("I am not loved!");
       // delete from users loved products list and update the database.

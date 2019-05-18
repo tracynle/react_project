@@ -30,8 +30,8 @@ module.exports = function(app) {
   });
 
   // Create new user > Add to db (CREATE)
-  app.post("/api/userLikes", function(req, res) {
-    console.log("ZZZZZZZZZ");
+  app.post("/api/userLikes/", function(req, res) {
+    console.log("=================== ZZZZZZZZZ ===============");
     console.log(req.body);
     //db.tableName.create(req.body).then(function(dbName) {});
     db.UserLikes.create(req.body).then(function(dbUserLikes) {
