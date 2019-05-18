@@ -48,7 +48,7 @@ const styles = theme => ({
     color: white 
   },
   productCardTitle: {
-    padding: "5px"
+    padding: "0px"
   },
   favAndPricePadding: {
     padding: "0px"
@@ -124,6 +124,7 @@ class ProductCard extends Component {
     const { classes } = this.props;
 
     return (
+      <div>
       <Card id={this.props.userId} className={classes.card}>
         <CardMedia
           className={classes.media}
@@ -168,6 +169,7 @@ class ProductCard extends Component {
           </CardContent>
         </Collapse>
       </Card>
+      </div>
     );
   }
 }

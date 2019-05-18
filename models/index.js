@@ -5,9 +5,9 @@ var path = require("path");
 var Sequelize = require("sequelize");
 var basename = path.basename(module.filename);
 // development will only connect to local mysql
-var env = process.env.NODE_ENV || "development";
+// var env = process.env.NODE_ENV || "development";
 // production will connect to amazon db
-// var env = "production";
+var env = "production";
 
 var config = require(__dirname + "/../config/config.js")[env];
 var db = {};

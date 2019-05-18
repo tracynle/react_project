@@ -3,7 +3,7 @@ import AuthAPI from '../utils/AuthAPI';
 import Auth from '../utils/Auth';
 import { Link } from 'react-router-dom';
 
-import 'react-day-picker/lib/style.css';
+// import 'react-day-picker/lib/style.css';
 
 
 import Card from '@material-ui/core/Card';
