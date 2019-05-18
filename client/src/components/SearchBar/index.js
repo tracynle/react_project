@@ -70,7 +70,7 @@ class SearchBar extends React.Component {
         })
         .then(response => {
           // Redirect to results page to render etsy's results
-          // Will be redirected to a new page and it will be pushed into the browser's history
+          // Will be pushed into the browser's history in User page
           // the state contains the response and it is grabing the data that we need
           console.log(this.props);
           // you are pushing the data into a new history

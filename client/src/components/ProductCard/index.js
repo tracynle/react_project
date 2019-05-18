@@ -105,8 +105,6 @@ class ProductCard extends Component {
 
   // Make an Ajax call to retrieve Etsy's images
   // Images will be rendered onto User's page
-  // save in userbanner.
-  // this setState will update into new cards and update the state
 
   componentDidMount = () => {
     axios.get('/api/images', {

@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 
 
 import SearchBar from '../SearchBar';
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -202,7 +203,7 @@ class UserBanner extends React.Component {
               }}
               variant="permanent"
               open
-            >
+            > 
               {drawer}
             </Drawer>
           </Hidden>

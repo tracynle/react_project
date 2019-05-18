@@ -232,20 +232,20 @@ class ListFriends extends Component {
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               My Friends
-                </Typography>
-            <div className={classes.grow} />
-            <div className={classes.search}>
+            </Typography>
+              <div className={classes.grow} />
+              <div className={classes.search}>
               <div className={classes.searchIcon}>
-                <SearchIcon />
+              <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
               />
-            </div>
+          </div>    
           </Toolbar>
         </AppBar>
         <Drawer

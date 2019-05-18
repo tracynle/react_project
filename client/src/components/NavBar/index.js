@@ -5,8 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import SearchBar from '../SearchBar';
 
+import SearchBar from '../SearchBar';
 import { Link } from 'react-router-dom';
 
 const styles = theme => ({
