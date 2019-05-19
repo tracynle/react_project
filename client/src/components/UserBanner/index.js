@@ -54,69 +54,50 @@ const styles = theme => ({
     padding: theme.spacing.unit * 7,
     backgroundColor: "grey",
   },
-});
-
-//Test Array **Etsy Search Results Would Replace This**
-// let etsyProduct = [
-//   {
-//     myId: 123,
-//     image: "http://www.briteandbubbly.com/wp-content/uploads/2012/03/legoavengers.jpg",
-//     title: "Avengers",
-//     description: "The crew that rolls deep in the first Avengers Movie",
-//     price: 23
-//   },
-//   {
-//     myId: 1234,
-//     image: "https://i.pinimg.com/736x/03/f8/34/03f834d2cb811fb55426a980fa26b28e--lego-avengers-lego-marvel.jpg",
-//     title: "Avengers Age of Ultron",
-//     description: "The lego pose of Avengers Age of Ultron",
-//     price: 25
-//   },
-//   {
-//     myId: 12345,
-//     image: "https://i.pinimg.com/originals/3a/4c/24/3a4c2457f03faba6fb2be1a66eaa9b68.jpg",
-//     title: "Avengers Infinity War",
-//     description: "The Lego version of Avengers Infinity War",
-//     price: 27
-//   },
-// ];
-
-// //This holds the Map Function
-// let mapEtsyProducts = etsyProduct.map((productList) => {
-//   return <Grid key={productList.title.toString()} item lg={3} md={4} sm={6} xs={12}>
-//     <ProductCard
-//       userId={productList.myId}
-//       imageUrl={productList.image}
-//       title={productList.title}
-//       description={productList.description}
-//       price={productList.price}
-//     />
-//   </Grid>;
-// });
+})
 
 // Start of the UserBanner Class
 class UserBanner extends React.Component {
-  state = {
-    mobileOpen: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobileOpen: false,
+      productOrWishlist: false,
+    };
 
+    this.wishlistClick = this.wishlistClick.bind(this);
+    this.searchProductsClick = this.searchProductsClick.bind(this);
+  }
+
+  //**TRACY --- added a state change event that goes to wishlist */
   wishlistClick = (e) => {
     e.preventDefault();
-    function UserBannerWishlistClick() {
-      //Input logic that will route to users wishlist
-      return console.log("Going to my wishlist!");
+    if (this.state.productOrWishlist === false) {
+      this.setState({
+        productOrWishlist: true
+      });
+      console.log('this should be false: ' + this.state.productOrWishlist);
     }
-    return UserBannerWishlistClick();
+  };
+  //**TRACY --- added another button that allows you to search products and render them */
+  searchProductsClick = (e) => {
+    e.preventDefault();
+    if (this.state.productOrWishlist === true) {
+      this.setState({
+        productOrWishlist: false
+      });
+      console.log('this should be false: ' + this.state.productOrWishlist);
+    }
   }
 
   friendsClick = (e) => {
     e.preventDefault();
     function UserBannerFriendsClick() {
       //Input logic that will route to the users list of friends
-      return console.log("Going to my list of Friends")
+      return console.log("Going to my list of Friends");
     }
     return UserBannerFriendsClick();
-  }
+  };
 
 
   savedWishesClick = (e) => {
@@ -126,7 +107,7 @@ class UserBanner extends React.Component {
       return console.log("Going to all the Wishes that you saved for your friends");
     }
     return UserBannerSavedWishesClick();
-  }
+  };
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -145,11 +126,13 @@ class UserBanner extends React.Component {
         />
         <List>
           <Divider />
-          <Link to="/user">
-            <ListItem button>
-              <ListItemText primary={"My Wishlist"} />
-            </ListItem>
-          </Link>
+          <ListItem button onClick={this.searchProductsClick}>
+            <ListItemText primary={"Search Etsy"} />
+          </ListItem>
+          <Divider />
+          <ListItem button onClick={this.wishlistClick}>
+            <ListItemText primary={"My Wishlist"} />
+          </ListItem>
           <Divider />
           <Link to="/FriendsList">
             <ListItem button>
@@ -160,6 +143,31 @@ class UserBanner extends React.Component {
         </List>
       </div>
     );
+
+    //**TRACY --- this is to be replace with the mapping logic for the WishList Cards */
+    let mapWishlistCards = <div> replace this witht the mapping method that maps the component wishesCard </div>;
+
+    //**TRACY --- this is where I saved the mapping of product card as a variable */
+    let mapProductCards = this.props.items.map(item => {
+      return (
+        <ProductCard
+          key={item.listing_id}
+          listing_id={item.listing_id}
+          title={item.title}
+          price={item.price}
+          description={item.description}
+        />
+      )
+    });
+
+    //**TRACY --- this is the conditional component that uses the variables 'mapWishlistCards' and 'mapProductCards' */
+    let MapProductOrWishlistCards = () => {
+      if (this.state.productOrWishlist === false) {
+        return mapProductCards;
+      } else {
+        return mapWishlistCards;
+      }
+    }
 
     return (
       <div className={classes.root}>
@@ -177,8 +185,8 @@ class UserBanner extends React.Component {
             <Typography variant="h6" color="inherit" noWrap>
               Wish Maker
             </Typography>
-            <SearchBar history={this.props.history}/>
-            </Toolbar>
+            <SearchBar history={this.props.history} />
+          </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
           <Hidden smUp implementation="css">
@@ -203,7 +211,7 @@ class UserBanner extends React.Component {
               }}
               variant="permanent"
               open
-            > 
+            >
               {drawer}
             </Drawer>
           </Hidden>
@@ -211,17 +219,8 @@ class UserBanner extends React.Component {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Grid container spacing={16} justify="flex-start">
-            {this.props.items.map(item => { 
-              return (
-                  <ProductCard
-                      key={item.listing_id}
-                      listing_id={item.listing_id}
-                      title={item.title}
-                      price={item.price}
-                      description={item.description}
-                  />
-              )
-          })}
+            {/**TRACY --- this is the conditional component i made, no need to pass state or props to this one */}
+            <MapProductOrWishlistCards />
           </Grid>
           <div className="below-main"></div>
         </main>

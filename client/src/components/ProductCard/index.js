@@ -108,7 +108,7 @@ class ProductCard extends Component {
         console.log("======= This is Error =======");
         console.log(err);
       })
-
+      
     }
   }
 
