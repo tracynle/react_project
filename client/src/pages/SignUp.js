@@ -87,7 +87,8 @@ class SignUp extends React.Component{
     handleFormSubmit = event => {
         event.preventDefault();
             if (this.state.username && this.state.password) {
-            AuthAPI.signup({
+                this.props.history.push('/user')
+            /*AuthAPI.signup({
                 username: this.state.username,
                 password: this.state.password,
                 firstName: this.state.firstName,
@@ -101,8 +102,9 @@ class SignUp extends React.Component{
                 console.log(res.data.token)
             })
             .catch(err => console.log(err));
-        };
-    }
+        };*/
+        }
+    };
 
     render() {
         const { classes } = this.props;

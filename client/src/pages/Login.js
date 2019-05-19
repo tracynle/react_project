@@ -36,6 +36,7 @@ class Login extends React.Component {
     state = { 
         username: '',
         password: '',
+        showPassword: false,
     };
 
     handleInputChange = event => { 
@@ -49,7 +50,8 @@ class Login extends React.Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if(this.state.username && this.state.password){
-            API.login({
+            this.props.history.push('/user')
+            /*API.login({
                 username: this.state.username,
                 password: this.state.password,
             })
@@ -57,7 +59,7 @@ class Login extends React.Component {
                 Auth.setToken(res.data.token);
                 this.props.history.push(`/users`)
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err));*/
         }
     };
 
