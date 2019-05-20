@@ -10,13 +10,7 @@
     "if-env": "^1.0.4",
     "mysql2": "^1.6.5",
     "react-day-picker": "^7.3.0",
-    "sequelize": "^5.8.2",
-    "mysql2": "^1.6.5",
-    "sequelize": "^5.8.2",
-    "if-env": "^1.0.4",
-    "mysql2": "^1.6.5",
-    "sequelize": "^5.8.2",
-    "if-env": "^1.0.4"
+    "sequelize": "^5.8.2"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",

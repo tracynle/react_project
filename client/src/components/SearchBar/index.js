@@ -3,33 +3,55 @@ import PropTypes from 'prop-types';
 import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import axios from "axios";
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
+import SearchIcon from '@material-ui/icons/Search';
 
 const styles = theme => ({
-    inputRoot: {
-      color: 'inherit',
-      width: '100%',
-    },
-    inputInput: {
-      paddingTop: theme.spacing.unit,
-      paddingRight: theme.spacing.unit,
-      paddingBottom: theme.spacing.unit,
-      paddingLeft: theme.spacing.unit * 10,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: 120,
-        '&:focus': {
-          width: 200,
-        },
+  inputRoot: {
+    color: 'inherit',
+    width: '100%',
+  },
+  inputInput: {
+    paddingTop: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit * 10,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: 120,
+      '&:focus': {
+        width: 200,
       },
     },
-  });
+  },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing.unit,
+      width: 'auto',
+    },
+  },
+  searchIcon: {
+    width: theme.spacing.unit * 9,
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});
   
 class SearchBar extends React.Component {
-    // state = {
-    //   results: []
-    // }
     static propTypes = {
         classes: PropTypes.object.isRequired,
     }
@@ -48,16 +70,15 @@ class SearchBar extends React.Component {
         })
         .then(response => {
           // Redirect to results page to render etsy's results
-          // Will be redirected to a new page and it will be pushed into the browser's history
+          // Will be pushed into the browser's history in User page
           // the state contains the response and it is grabing the data that we need
           console.log(this.props);
+          // you are pushing the data into a new history
           this.props.history.push({
-            pathname:"/results",
-            state:{
-              items: response.data.results
-             }
+            pathname:"/user",
+              // pass the state to the redirected page which is the user page
+            items: response.data.results
            });
-          // this.setState({results: response.data.results})
         })
         .catch(function (error) {
           console.log(error);
@@ -68,16 +89,23 @@ class SearchBar extends React.Component {
     
     // search bar component
     render() {
+      const { classes } = this.props;
       return (
         <div>
-          <InputBase 
+          <div className={classes.grow} />
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase 
             placeholder="Search…"
             classes={{
-                root: this.props.classes.inputRoot,
-                input: this.props.classes.inputInput,
+              root: this.props.classes.inputRoot,
+              input: this.props.classes.inputInput,
             }}
             onKeyUp = { e => {this.doSomethingWithSearchTerms(e)} }
-          />
+            />
+          </div>
         </div>
       )
     }

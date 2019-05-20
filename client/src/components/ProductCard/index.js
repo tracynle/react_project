@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import classnames from 'classnames';
+import classnames from 'classnames'; // not sure what this does
 import Card from '@material-ui/core/Card';
 
 import CardMedia from '@material-ui/core/CardMedia';
@@ -17,14 +17,17 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import axios from 'axios';
+import ashKetchum from '../../utils/ashKetchum';
 
 const styles = theme => ({
   card: {
-    maxWidth: 300,
+    maxWidth: 250,
+    margin: "10px",
   },
   media: {
     height: 0,
-    paddingTop: '90.25%', // 16:9
+    paddingTop: '100%', // 16:9
   },
   actions: {
     display: 'flex',
@@ -44,20 +47,14 @@ const styles = theme => ({
   },
   isNotLoved: {
     color: white 
+  },
+  productCardTitle: {
+    padding: "0px"
+  },
+  favAndPricePadding: {
+    padding: "0px"
   }
 });
-
-function EtsyProducts(props) {
-  const arrayHolder = props.etsyArray;
-  const etsyListItems = arrayHolder.map((etsyArray) =>
-    //dont change -- '<li>' tag will be edited by me - Matt
-    <li key={etsyArray.toString()}>{etsyArray}</li>
-  );
-  return (
-    //dont change -- div is holding '<li>'
-    <ul>{etsyListItems}</ul>
-  );
-}
 
 class ProductCard extends Component {
   constructor(props) {
@@ -65,8 +62,10 @@ class ProductCard extends Component {
     this.state = { 
       expanded: false,
       loved: false,
+      image: "",
+      id: 0
     };
-  }
+  };
 
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
@@ -80,32 +79,83 @@ class ProductCard extends Component {
   isLoveClicked = () => {
     if (!this.state.loved) {
       console.log("I am loved!");
-      // post to users loved products list and update the database.
+      console.log("THIS IS LISTING ID " + this.props.listing_id);
+      console.log("THIS IS IMAGE " + this.state.image);
+      console.log("THIS IS TITLE " + this.props.title);
+      console.log("THIS IS PRICE " + this.props.price);
+      console.log("THIS IS DESCRIP " + this.props.description);
+      axios.post("/api/userLikes/",{
+        //taking the current product cards information to post to the UserLikes table for it to later render in the wishlist spot
+        imageUrl: this.state.image,
+        title: this.props.title,
+        price: this.props.price,
+        description: this.props.description,
+        UserId: ashKetchum.id,
+      })
+      .then(response => {
+        console.log("=============================RESPONSE==============================");
+        console.log(response);
+        this.setState({
+          id: response.data.id
+        })
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
     } else {
       console.log("I am not loved!");
-      // delete from users loved products list and update the database.
+
+      axios.delete("/api/userLikes/" + this.state.id).then(data => {
+        console.log("======= This is Data =======");
+        console.log(data);
+        this.setState({
+          loved: false
+        })
+      }).catch(err => {
+        console.log("======= This is Error =======");
+        console.log(err);
+      })
+      
     }
+  }
+
+  // Make an Ajax call to retrieve Etsy's images
+  // Images will be rendered onto User's page
+
+  componentDidMount = () => {
+    axios.get('/api/images', {
+      params: {
+        item: this.props.listing_id
+      }
+    })
+    .then(response => {
+      const imageUrl = response.data.results[0].url_fullxfull;
+      this.setState({
+        image: imageUrl
+      })
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
   }
 
   render() {
     const { classes } = this.props;
 
     return (
+      <div>
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image={this.props.imageUrl}
+          image={this.state.image}
           title={this.props.title}
         />
-        <CardContent>
-          <Typography variant="h5">
+        <CardContent className={classes.productCardTitle}>
+          <Typography variant="h6">
             {this.props.title}
           </Typography>
-          <Typography component="p">
-            {this.props.description}
-          </Typography>
         </CardContent>
-        <CardActions className={classes.actions} disableActionSpacing>
+        <CardActions className={classes.actions && classes.favAndPricePadding} disableActionSpacing>
           <IconButton className={classnames(
             classes.isNotLoved, {
             [classes.isLoved]: this.state.loved
@@ -131,13 +181,14 @@ class ProductCard extends Component {
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography variant='h6'>Tags:</Typography>
-            <EtsyProducts 
-              etsyArray = {this.props.etsyTags}
-            />
+            <Typography variant='h6'>Description:</Typography>
+            <Typography component="p">
+            {this.props.description}
+            </Typography>
           </CardContent>
         </Collapse>
       </Card>
+      </div>
     );
   }
 }

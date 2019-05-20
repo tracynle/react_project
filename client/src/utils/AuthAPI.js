@@ -14,10 +14,12 @@ const headers = () => {
 
 export default {
     login: function(loginInfo) {
-        return axios.post("/api/auth/login", loginInfo);
+        // send user login info to API
+        return axios.post("/api/auth/login", loginInfo, headers());
     },
     signup: function(signupInfo) {
-        return axios.post("/api/auth/signup", signupInfo);
+        // send user signup info to API
+        return axios.post("/api/auth/signup", signupInfo, headers());
     }
     //Add Delete function for friends and or account
     //Add retrive friends list API from DB, include ID and the axios header

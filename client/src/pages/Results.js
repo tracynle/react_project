@@ -10,25 +10,24 @@ class Results extends Component {
     state = {
         items: []
     }
-    
 
-    // === RENDER FUNCTION === 
-    // 
+    // === RENDER FUNCTION ===  
     render() {
         return(
             <div>
-            <NavBar></NavBar>
+                <NavBar></NavBar>
                 {this.props.location.state.items.map(item => { 
                     return (
-                       <ProductCard>
-                            {item.title}
-                            {item.price}
-                       </ProductCard>
-                        
+                        <ProductCard
+                            key={item.listing_id}
+                            listing_id={item.listing_id}
+                            title={item.title}
+                            tags={item.tags}
+                            price={item.price}
+                            description={item.description}
+                        />
                     )
-
                 })}
-             
             </div>
         );
     }

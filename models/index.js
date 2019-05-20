@@ -4,13 +4,27 @@ var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
 var basename = path.basename(module.filename);
-var env = process.env.NODE_ENV || "development";
+// development will only connect to local mysql (check config.js)
+// var env = process.env.NODE_ENV || "development";
+// production will connect to amazon db on heroku
+var env = "production";
+
 var config = require(__dirname + "/../config/config.js")[env];
 var db = {};
 
 if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  console.log("AAAAAA");
+  var sequelize = new Sequelize(
+    config.database,
+    config.username,
+    config.password,
+    config
+  );
+  // var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
+  console.log("BBBBBB");
+  console.log(env);
+  console.log(process.env.MYSQL_DB); 
   var sequelize = new Sequelize(
     config.database,
     config.username,
@@ -27,6 +41,7 @@ fs.readdirSync(__dirname)
   })
   .forEach(function(file) {
     var model = sequelize.import(path.join(__dirname, file));
+    console.log(`Registering table ${model.name}`);
     db[model.name] = model;
   });
 

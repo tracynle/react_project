@@ -1,5 +1,8 @@
 // ==== NEEDS IMPORT FROM REACT OR PAGE BREAK =====
 import React, { Component } from "react";
+import FriendBanner from '../components/FriendBanner';
+
+
 // ===== BELOW IMPORTS OTHER COMPONENTS USED IN PAGE =====
 
 
@@ -13,7 +16,7 @@ class Friends extends Component {
     render() {
         return(
             <div>
-                Friends Route
+                <FriendBanner />
             </div>
         );
     }
