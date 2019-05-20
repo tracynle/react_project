@@ -18,7 +18,10 @@ class User extends Component {
     render() {
         return(
             <div>
-                <UserBanner history={this.props.history} items={this.props.location.items ? this.props.location.items : []}/>
+                <UserBanner
+                    history={this.props.history}
+                    key={this.props.location.items ? this.props.location.items[0].listing_id : "anything"}
+                    items={this.props.location.items ? this.props.location.items : []}/>
             </div>
         );
     }

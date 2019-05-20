@@ -137,14 +137,14 @@ class UserBanner extends React.Component {
 
   // UNSAFE_componentWillReceiveProps = () => {
   //   console.log("zzzzzzzz");
-  
+    
   // }
 
-  static getDerivedStateFromProps(props, state) {
-    state.renderProducts = true;
-    console.log("getttingggg");
-    return state;
-  }
+  // static getDerivedStateFromProps(props, state) {
+  //   state.renderProducts = true;
+  //   console.log("getttingggg");
+  //   return state;
+  // }
 
   render() {
     const { classes, theme } = this.props;
