@@ -5,10 +5,10 @@
 
 let ashKetchum = {
     id: 1,
-    name: "Ash Ketchum",
+    name: "Peter Parker",
     bday: "5/26/2019",
-    userPhrase: "Let me dive into your Misty",
-    image: "http://imgmr.com/wp-content/uploads/2016/02/pokemon-4-1200x0.jpg"
+    userPhrase: "You can call me the web-master",
+    image: "https://media.giphy.com/media/xUySTLphzB4Svqd9VS/giphy.gif"
 }
 
 export default ashKetchum; 

@@ -13,7 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import ProductCard from '../ProductCard/index';
+import FriendProductCard from '../FriendProductCard/index';
 import FriendProfile from '../FriendProfile/index';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
@@ -79,8 +79,8 @@ let FriendsEtsyWishlist = [
 //This holds the Map Function
 let FriendsEtsyProducts = FriendsEtsyWishlist.map((productList) => {
   return <Grid key={productList.title.toString()} item lg={3} md={4} sm={6} xs={12}>
-    <ProductCard
-      imageUrl={productList.image}
+    <FriendProductCard
+      image={productList.image}
       title={productList.title}
       description={productList.description}
       price={productList.price}
@@ -131,7 +131,7 @@ class FriendsBanner extends React.Component {
     const drawer = (
       <div>
         <FriendProfile
-          FriendImageUrl={"https://www.hdwallpapers.in/download/dc_comics_the_flash-2048x1536.jpg"}
+          FriendImageUrl={"http://www1.pictures.zimbio.com/mp/PILmttI1PZcx.gif"}
           FriendName={"Barry Allen"}
           FriendBday={"7/29/1993"}
         />
