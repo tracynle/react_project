@@ -139,25 +139,25 @@ const styles = theme => ({
 // Test Array with all friends **CREATE LOGIC THAT PULLS ACTUALL FRIEND DATA AND SAVES IT IN AN ARRAY LIKE THIS**
 let AllFriends = [
   {
-    friendId: '543dfad2',
+    friendId: '1',
     image: 'https://www.hdwallpapers.in/download/dc_comics_the_flash-2048x1536.jpg',
     name: 'Barry Allen',
     birthday: '07/29/1993',
   },
   {
-    friendId: '5432dsfsf1',
+    friendId: '2',
     image: 'http://latimesherocomplex.files.wordpress.com/2014/07/arrow.jpg',
     name: 'Oliver Queen',
     birthday: '05/16/1985',
   },
   {
-    friendId: 'kjdflkekfe52345',
+    friendId: '3',
     image: 'https://art-s.nflximg.net/6f16c/9ad779b7e89aaa1fdc7c7f7c59ba684d04a6f16c.jpg',
     name: 'Kara Zor-el',
     birthday: '09/22/1975',
   },
   {
-    friendId: 'lkasjdflkei452ertqret',
+    friendId: '4',
     image: 'https://thiswallpaper.com/cdn/hdwallpapers/533/the%20dark%20knight%20rises%20wide%20hd%20wallpaper.jpg',
     name: 'Bruce Wayne',
     birthday: '05/27/1983',

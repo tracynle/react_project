@@ -24,7 +24,11 @@ module.exports = function(app) {
   // -------------- DB userLikes Routes --------------------
   // Get all likes from the user
   app.get("/api/userLikes/", function(req, res) {
-    db.UserLikes.findAll({}).then(function(dbUserLikes) {
+    db.UserLikes.findAll({
+      where: {
+        UserId: req.query.userId
+      }
+    }).then(function(dbUserLikes) {
       res.json(dbUserLikes);
     });
   });
@@ -42,10 +46,10 @@ module.exports = function(app) {
     });
   });
 
-  app.delete("/api/userLikes/:id", function(request, response) {
+  app.delete("/api/userLikes/:id", function(req, res) {
     db.UserLikes.destroy({
       where: {
-        UserId: request.params.id
+        id: req.params.id
       }
     })
   })

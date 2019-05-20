@@ -4,9 +4,9 @@ var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
 var basename = path.basename(module.filename);
-// development will only connect to local mysql
+// development will only connect to local mysql (check config.js)
 var env = process.env.NODE_ENV || "development";
-// production will connect to amazon db
+// production will connect to amazon db on heroku
 // var env = "production";
 
 var config = require(__dirname + "/../config/config.js")[env];
@@ -23,6 +23,8 @@ if (config.use_env_variable) {
   // var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
   console.log("BBBBBB");
+  console.log(env);
+  console.log(process.env.MYSQL_DB); 
   var sequelize = new Sequelize(
     config.database,
     config.username,

@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     price: DataTypes.INTEGER,
     description: DataTypes.TEXT,
     title: DataTypes.STRING,
+    imageUrl: DataTypes.STRING
   });
 
   UserLikes.associate = function(models) {

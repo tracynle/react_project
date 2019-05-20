@@ -18,6 +18,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import axios from 'axios';
+import ashKetchum from '../../utils/ashKetchum';
 
 const styles = theme => ({
   card: {
@@ -61,7 +62,8 @@ class ProductCard extends Component {
     this.state = { 
       expanded: false,
       loved: false,
-      image: ""
+      image: "",
+      id: 0
     };
   };
 
@@ -84,16 +86,18 @@ class ProductCard extends Component {
       console.log("THIS IS DESCRIP " + this.props.description);
       axios.post("/api/userLikes/",{
         //taking the current product cards information to post to the UserLikes table for it to later render in the wishlist spot
-        image: this.state.image,
+        imageUrl: this.state.image,
         title: this.props.title,
         price: this.props.price,
         description: this.props.description,
-        UserId: 1
+        UserId: ashKetchum.id,
       })
-      .then(function (response) {
-        console.log("=============================RESPONSE==============================");
+      .then(response => {
         console.log("=============================RESPONSE==============================");
         console.log(response);
+        this.setState({
+          id: response.data.id
+        })
       })
       .catch(function (err) {
         console.log(err);
@@ -101,9 +105,12 @@ class ProductCard extends Component {
     } else {
       console.log("I am not loved!");
 
-      axios.delete("/api/userLikes/" + 1).then(data => {
+      axios.delete("/api/userLikes/" + this.state.id).then(data => {
         console.log("======= This is Data =======");
         console.log(data);
+        this.setState({
+          loved: false
+        })
       }).catch(err => {
         console.log("======= This is Error =======");
         console.log(err);
@@ -137,7 +144,7 @@ class ProductCard extends Component {
 
     return (
       <div>
-      <Card id={this.props.userId} className={classes.card}>
+      <Card className={classes.card}>
         <CardMedia
           className={classes.media}
           image={this.state.image}

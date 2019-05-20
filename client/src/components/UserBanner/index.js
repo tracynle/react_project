@@ -20,6 +20,9 @@ import { Link } from 'react-router-dom';
 
 
 import SearchBar from '../SearchBar';
+import axios from 'axios';
+import ashKetchum from '../../utils/ashKetchum';
+import WishesCard from '../WishesCard';
 
 const drawerWidth = 240;
 
@@ -62,33 +65,52 @@ class UserBanner extends React.Component {
     super(props);
     this.state = {
       mobileOpen: false,
-      productOrWishlist: false,
+      renderProducts: true,
+      wishCards: []
     };
 
     this.wishlistClick = this.wishlistClick.bind(this);
-    this.searchProductsClick = this.searchProductsClick.bind(this);
+    // this.searchProductsClick = this.searchProductsClick.bind(this);
   }
 
   //**TRACY --- added a state change event that goes to wishlist */
+  // when wishlist is clicked, you make a request to the server to get the likes belonging to user: Ash
   wishlistClick = (e) => {
     e.preventDefault();
-    if (this.state.productOrWishlist === false) {
+    // if (this.state.renderProducts === true) {
       this.setState({
-        productOrWishlist: true
+        renderProducts: false
       });
-      console.log('this should be false: ' + this.state.productOrWishlist);
-    }
+    //   console.log('this should be false: ' + this.state.renderProducts);true }
+
+    // Make a get request from UserLikes db in the UserId column which gets their liked items
+    // will be called in wishListClick
+    axios.get('api/userLikes', {
+      params: {
+        userId: ashKetchum.id
+      }
+    })
+    .then(response => {
+      console.log("Response!!!!!", response);
+      // using setState, we save the response in the state: wishCards state
+        this.setState({
+          wishCards: response.data
+        })
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
   };
+
   //**TRACY --- added another button that allows you to search products and render them */
-  searchProductsClick = (e) => {
-    e.preventDefault();
-    if (this.state.productOrWishlist === true) {
-      this.setState({
-        productOrWishlist: false
-      });
-      console.log('this should be false: ' + this.state.productOrWishlist);
-    }
-  }
+  // searchProductsClick = (e) => {
+  //   e.preventDefault();
+  //   if (this.state.renderProducts ===true) {
+  //     this.setState({
+  //       renderProducts: true
+  //     });
+  //     console.log('this should be false: ' + this.state.renderProducts)true   }
+  // }
 
   friendsClick = (e) => {
     e.preventDefault();
@@ -119,10 +141,10 @@ class UserBanner extends React.Component {
     const drawer = (
       <div>
         <UserCard
-          UserImageUrl={"http://imgmr.com/wp-content/uploads/2016/02/pokemon-4-1200x0.jpg"}
-          UserName={"Ash Ketchum"}
-          UserBday={"5/26/2019"}
-          UserPhrase={"Let me dive into your Misty"}
+          UserImageUrl={ashKetchum.image}
+          UserName={ashKetchum.name}
+          UserBday={ashKetchum.bday}
+          UserPhrase={ashKetchum.userPhrase}
         />
         <List>
           <Divider />
@@ -145,7 +167,17 @@ class UserBanner extends React.Component {
     );
 
     //**TRACY --- this is to be replace with the mapping logic for the WishList Cards */
-    let mapWishlistCards = <div> replace this witht the mapping method that maps the component wishesCard </div>;
+    let mapWishlistCards = this.state.wishCards.map(item => {
+      return (
+        <WishesCard 
+          key={item.id}
+          title={item.title}
+          image={item.imageUrl}
+          price={item.price}
+          description={item.description}
+        />
+      )
+    })
 
     //**TRACY --- this is where I saved the mapping of product card as a variable */
     let mapProductCards = this.props.items.map(item => {
@@ -162,7 +194,7 @@ class UserBanner extends React.Component {
 
     //**TRACY --- this is the conditional component that uses the variables 'mapWishlistCards' and 'mapProductCards' */
     let MapProductOrWishlistCards = () => {
-      if (this.state.productOrWishlist === false) {
+      if (this.state.renderProducts === true) {
         return mapProductCards;
       } else {
         return mapWishlistCards;
@@ -219,8 +251,7 @@ class UserBanner extends React.Component {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Grid container spacing={16} justify="flex-start">
-            {/**TRACY --- this is the conditional component i made, no need to pass state or props to this one */}
-            <MapProductOrWishlistCards />
+            { MapProductOrWishlistCards() }
           </Grid>
           <div className="below-main"></div>
         </main>
