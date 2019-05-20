@@ -135,6 +135,17 @@ class UserBanner extends React.Component {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
+  // UNSAFE_componentWillReceiveProps = () => {
+  //   console.log("zzzzzzzz");
+  
+  // }
+
+  static getDerivedStateFromProps(props, state) {
+    state.renderProducts = true;
+    console.log("getttingggg");
+    return state;
+  }
+
   render() {
     const { classes, theme } = this.props;
 
