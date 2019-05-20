@@ -51,7 +51,7 @@ class Login extends React.Component {
         event.preventDefault();
         if(this.state.username && this.state.password){
             this.props.history.push('/user')
-            /*API.login({
+            API.login({
                 username: this.state.username,
                 password: this.state.password,
             })
@@ -59,7 +59,7 @@ class Login extends React.Component {
                 Auth.setToken(res.data.token);
                 this.props.history.push(`/users`)
             })
-            .catch(err => console.log(err));*/
+            .catch(err => console.log(err));
         }
     };
 
@@ -101,6 +101,8 @@ class Login extends React.Component {
                                                 label='Password'
                                                 margin='normal'
                                                 variant="outlined"
+                                                type={this.state.showPassword ? 'text' : 'password'}
+
 
                                             />
                                         </div>
