@@ -70,19 +70,20 @@ class UserBanner extends React.Component {
     };
 
     this.wishlistClick = this.wishlistClick.bind(this);
-    // this.searchProductsClick = this.searchProductsClick.bind(this);
+    this.searchProductsClick = this.searchProductsClick.bind(this);
   }
 
   //**TRACY --- added a state change event that goes to wishlist */
   // when wishlist is clicked, you make a request to the server to get the likes belonging to user: Ash
   wishlistClick = (e) => {
     e.preventDefault();
-    // if (this.state.renderProducts === true) {
+    if (this.state.renderProducts === true) {
       this.setState({
         renderProducts: false
       });
-    //   console.log('this should be false: ' + this.state.renderProducts);true }
-
+      console.log('this should be false: ' + this.state.renderProducts);
+    }
+    
     // Make a get request from UserLikes db in the UserId column which gets their liked items
     // will be called in wishListClick
     axios.get('api/userLikes', {
@@ -100,17 +101,19 @@ class UserBanner extends React.Component {
     .catch(function (error) {
         console.log(error);
     })
+    
   };
 
   //**TRACY --- added another button that allows you to search products and render them */
-  // searchProductsClick = (e) => {
-  //   e.preventDefault();
-  //   if (this.state.renderProducts ===true) {
-  //     this.setState({
-  //       renderProducts: true
-  //     });
-  //     console.log('this should be false: ' + this.state.renderProducts)true   }
-  // }
+  searchProductsClick = (e) => {
+    e.preventDefault();
+    if (this.state.renderProducts === false) {
+      this.setState({
+        renderProducts: true
+      });
+      console.log('this should be false: ' + this.state.renderProducts)
+    }
+  };
 
   friendsClick = (e) => {
     e.preventDefault();
@@ -134,17 +137,6 @@ class UserBanner extends React.Component {
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
-
-  // UNSAFE_componentWillReceiveProps = () => {
-  //   console.log("zzzzzzzz");
-    
-  // }
-
-  // static getDerivedStateFromProps(props, state) {
-  //   state.renderProducts = true;
-  //   console.log("getttingggg");
-  //   return state;
-  // }
 
   render() {
     const { classes, theme } = this.props;
