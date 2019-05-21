@@ -17,8 +17,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import axios from 'axios';
-
 
 const styles = theme => ({
   card: {

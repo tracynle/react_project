@@ -3,9 +3,6 @@ import React from 'react';
 // import Auth from '../utils/Auth';
 import { Link } from 'react-router-dom';
 
-// import 'react-day-picker/lib/style.css';
-
-
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';

@@ -3,12 +3,6 @@ import React from "react"; // imports the component "Component" from react's "Co
 import WelcomeCard from '../components/WelcomeCard';
 
 // // === RENDER FUNCTION  === 
-// const styles = {
-//     background: {
-
-//     }
-
-// }
 
 function renderHome(props){
     return(
