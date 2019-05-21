@@ -2,10 +2,17 @@
 import React from "react"; // imports the component "Component" from react's "Component.js" file
 import WelcomeCard from '../components/WelcomeCard';
 
-// === RENDER FUNCTION  === 
+// // === RENDER FUNCTION  === 
+// const styles = {
+//     background: {
+
+//     }
+
+// }
+
 function renderHome(props){
     return(
-        <div>
+        <div >
             <WelcomeCard></WelcomeCard>
         </div>
     )

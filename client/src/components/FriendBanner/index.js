@@ -173,7 +173,7 @@ class FriendsBanner extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
-              Wish List
+              Wishes
             </Typography>
           </Toolbar>
         </AppBar>

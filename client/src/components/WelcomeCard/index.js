@@ -53,7 +53,7 @@ function MediaCard(props) {
             <CardContent>
               <Typography gutterBottom variant='h5' component='h2'>
                 <img className={classes.img} alt="complex" src='../../../images/bluebdaycake.jpg'></img>
-                  Welcome to Wishlist!
+                  Welcome to Wish Maker!
                 <p>
                   <h6>
                     Making Birthdays Memorable

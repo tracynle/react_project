@@ -118,7 +118,7 @@ class SignUp extends React.Component{
                             <CardContent>
                                 
                                 <Typography gutterBottom variant='h5' component='h2' color='textPrimary' style={{ textAlign: 'center' }}>
-                                    Sign Up with Wish List
+                                    Sign Up with Wish Maker
                                 </Typography>
                                 <form>
                                 
