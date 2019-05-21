@@ -14,3 +14,4 @@ SELECT * FROM UserLikes;
 
 SELECT * FROM friends;
 
+-- DELETE FROM UserLikes;
